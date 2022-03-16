@@ -17,20 +17,26 @@
 .flex-body-header-item {
     border-radius: 5px;
     margin: 10px;
-    text-align: center;
+    text-align: left;
     text-decoration: underline;
 }
 
-.flex-body-item {
+.flex-body-item-column {
+    display: flex;
+    flex-direction: column;
+
     border-radius: 5px;
     margin: 10px;
     padding: 2px 0px 2px 20px;
 }
 
-.flex-item-container {
+.flex-body-item-row {
     display: flex;
-    justify-content: center; /* Horizontal center */
-    text-align: center;
+
+    border-radius: 5px;
+    margin: 10px;
+    padding: 2px 0px 2px 20px;
+    align-items: center;
 }
 
 h3,
@@ -38,14 +44,24 @@ h4 {
     line-height: 0px;
 }
 
-.displayCardCount {
-    font-size: 24px;
-    font-weight: bold;
-    color: blue;
-    padding: 1px 0px 1px 3px;
-}
-
 .subHeading {
     text-decoration: underline;
     font-size: 18px;
+}
+
+.formatListTag {
+    line-height: 2;
+}
+
+.matInputField {
+    width: 100%;
+}
+
+.rowBackgroundColor {
+    background-color: aqua;
+}
+
+.toggleContainer {
+    background-color: gold;
+    padding: 10px;
 }
