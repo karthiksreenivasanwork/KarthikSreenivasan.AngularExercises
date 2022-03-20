@@ -1,0 +1,70 @@
+.flex-body-container {
+    height: 80%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.flex-body-container-border {
+    width: 500px;
+    border: 3px solid rgb(0, 165, 143);
+}
+
+.flex-body-header-item {
+    border-radius: 5px;
+    margin: 10px;
+    text-align: left;
+    text-decoration: underline;
+}
+
+.flex-body-item-column {
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 5px;
+    margin: 10px;
+    padding: 2px 0px 2px 20px;
+}
+
+.flex-body-item-row {
+    display: flex;
+
+    border-radius: 5px;
+    margin: 10px;
+    padding: 2px 0px 2px 20px;
+    align-items: center;
+}
+
+h3,
+h4 {
+    line-height: 0px;
+}
+
+.subHeading {
+    text-decoration: underline;
+    font-size: 18px;
+}
+
+.formatListTag {
+    line-height: 2;
+}
+
+.matInputField {
+    width: 100%;
+}
+
+.rowBackgroundColor {
+    background-color: aqua;
+}
+
+.fa {
+    transform: scale(3, 3);
+}
+
+.celldata {
+    margin-right: 30px;
+}
