@@ -8,13 +8,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { ProducttrackingComponent } from './producttracking/producttracking.component';
-import { ListproductsComponent } from './listproducts/listproducts.component';
-import { FormsModule } from '@angular/forms';
-import { NgSwitchDirectiveComponent } from './ng-switch-directive/ng-switch-directive.component';
 
+import { ProducttrackingComponent } from './codingexercises/producttracking/producttracking.component';
+import { ListproductsComponent } from './codingexercises/listproducts/listproducts.component';
+import { NgSwitchDirectiveComponent } from './codingexercises/ng-switch-directive/ng-switch-directive.component';
 
 @NgModule({
   declarations: [

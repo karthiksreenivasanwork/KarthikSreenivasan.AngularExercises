@@ -1,0 +1,136 @@
+.flex-body-container {
+  height: auto;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.flex-body-container-border {
+  border: 3px solid rgb(0, 165, 143);
+}
+
+.flex-body-header-item {
+  border-radius: 5px;
+  margin: 10px;
+  text-align: left;
+  text-decoration: underline;
+}
+
+.flex-body-item-column {
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 5px;
+  margin: 10px;
+  padding: 2px 0px 2px 20px;
+}
+
+.flex-body-item-row {
+  display: flex;
+
+  border-radius: 5px;
+  margin: 10px;
+  padding: 2px 0px 2px 20px;
+  align-items: center;
+}
+
+h3,
+h4 {
+  line-height: 0px;
+}
+
+.matInputField {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  th {
+    //Provide space between columns
+    padding: 20px;
+  }
+}
+
+.buttonEditOnGrid {
+  width: fit-content;
+  border: 0;
+  font-size: 14px;
+  padding: 0 8px;
+  text-shadow: 1px 1px 1px #000;
+  background-color: rgb(4, 108, 192);
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  line-height: 2.5;
+  color: rgb(255, 255, 255);
+  margin: 5px;
+
+  /*
+    * How to remove the text selection from the DIV button.
+    * Answer - It is with the user select css key
+    * https://stackoverflow.com/questions/3779534/how-do-i-disable-text-selection-with-css-or-javascript
+    */
+  //
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.buttonEditOnGrid:hover {
+  background-color: rgba(0, 0, 255, 0.8);
+}
+
+.buttonEditOnGrid:active {
+  box-shadow: inset -2px -2px 3px rgba($color: #82cdeb, $alpha: 1);
+}
+
+.buttonDeleteOnGrid {
+  width: fit-content;
+  border: 0;
+  font-size: 14px;
+  padding: 0 8px;
+  text-shadow: 1px 1px 1px #000;
+  background-color: rgb(189, 70, 80);
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  line-height: 2.5;
+  color: rgb(255, 255, 255);
+  margin: 5px;
+
+  /*
+    * How to remove the text selection from the DIV button.
+    * Answer - It is with the user select css key
+    * https://stackoverflow.com/questions/3779534/how-do-i-disable-text-selection-with-css-or-javascript
+    */
+  //
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.buttonDeleteOnGrid:hover {
+  background-color: rgba(255, 0, 0, 0.8);
+}
+
+.buttonDeleteOnGrid:active {
+  box-shadow: inset -2px -2px 3px rgba($color: #82cdeb, $alpha: 1);
+}
+
+.flex-cell-row {
+  display: flex;
+  padding: 12px 12px 2px 10px;
+  align-items: center;
+}
