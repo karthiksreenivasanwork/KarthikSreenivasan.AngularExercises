@@ -1,4 +1,4 @@
-.flex-body-container {
+.flex-container {
   height: auto;
   width: 100%;
   padding: 0;
@@ -6,22 +6,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
-.flex-body-container-border {
-  width: 500px;
-  border: 3px solid rgb(0, 165, 143);
-}
-
-.flex-body-header-item {
-  border-radius: 5px;
-  margin: 10px;
-  text-align: left;
-  text-decoration: underline;
-}
-
-.flex-body-item-column {
+.flex-item-column {
   display: flex;
   flex-direction: column;
 
@@ -30,13 +18,11 @@
   padding: 2px 0px 2px 20px;
 }
 
-.flex-body-item-row {
-  display: flex;
-
-  border-radius: 5px;
+.flex--item-row {
   margin: 10px;
   padding: 2px 0px 2px 20px;
   align-items: center;
+  width:90%;
 }
 
 h3,

@@ -1,0 +1,70 @@
+<div class="flex-container">
+  <div class="flex--item-row">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Ex# 4: Mini Project One </mat-panel-title>
+        <mat-panel-description> Requirements </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ul>
+        <li class="formatListTag">
+          <b>March 22, 2022</b>
+        </li>
+        <ul>
+          <span class="subHeading">Original Requirement</span>
+          <li class="formatListTag">
+            Add, Edit and Delete the payment details.
+          </li>
+          <li class="formatListTag">
+            Adding a product must be from one component.
+          </li>
+          <li class="formatListTag">
+            Editing and deleting must be from another component.
+          </li>
+          <li class="formatListTag">
+            Payment details must be tracked via a service.
+          </li>
+        </ul>        
+      </ul>
+      <ul>
+        <li class="formatListTag">
+          <b>March 23, 2022</b>
+        </li>
+        <ul>
+          <span class="subHeading">Updated Requirement</span>
+         
+        </ul>
+      </ul>
+    </mat-expansion-panel>
+  </div>
+  <div class="flex--item-row">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Add a new payment </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="flex-item-column">
+        <mat-form-field class="matInputField" appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Payer's Name" [(ngModel)]="_inputName" />
+        </mat-form-field>
+        <mat-form-field class="matInputField" appearance="fill">
+          <mat-label>Price</mat-label>
+          <input matInput placeholder="Total cost" [(ngModel)]="_inputPrice" />
+        </mat-form-field>
+        <mat-form-field class="matInputField" appearance="fill">
+          <mat-label>Card Number</mat-label>
+          <input
+            matInput
+            placeholder="Credit card number"
+            [(ngModel)]="_inputCardNumber"
+          />
+        </mat-form-field>
+      </div>
+      <div class="flex--item-row">
+        <div class="button" (click)="onAddPaymentClick()">Add Payment</div>
+      </div>
+      <div class="flex--item-row">
+        <div class="errormessage">{{ errorMessage }}</div>
+      </div>
+    </mat-expansion-panel>
+  </div>
+</div>

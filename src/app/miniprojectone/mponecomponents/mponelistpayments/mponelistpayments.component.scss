@@ -6,24 +6,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
-}
-
-.flex-body-container-border {
-  border: 3px solid rgb(0, 165, 143);
+  margin-top: 10px;
 }
 
 .flex-body-header-item {
-  border-radius: 5px;
-  margin: 10px;
-  text-align: left;
-  text-decoration: underline;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.flex-body-header-cell-left {
+  margin-left: 20px;
+  width: 50%;
+}
+
+.flex-body-header-cell-right {
+  margin-right: 20px;
+  width: 50%;
+  text-align: right;
 }
 
 .flex-body-item-column {
-  display: flex;
   flex-direction: column;
-
   border-radius: 5px;
   margin: 10px;
   padding: 2px 0px 2px 20px;
@@ -36,6 +40,12 @@
   margin: 10px;
   padding: 2px 0px 2px 20px;
   align-items: center;
+}
+
+
+.scrollable-container{
+  max-height: 250px;
+  overflow-y: auto;
 }
 
 h3,

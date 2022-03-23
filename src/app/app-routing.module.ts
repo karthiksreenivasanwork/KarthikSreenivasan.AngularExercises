@@ -14,7 +14,7 @@ const routes: Routes = [
     { path: 'exThreengSwitch', component: NgSwitchDirectiveComponent },
 
     {path: 'miniprojectone', loadChildren: () => MiniprojectoneModule },
-    { path: "**", redirectTo: "exOneBinding" }
+    { path: "**", redirectTo: "miniprojectone" }
 ];
 
 @NgModule({

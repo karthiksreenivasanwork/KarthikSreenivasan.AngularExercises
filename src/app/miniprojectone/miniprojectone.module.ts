@@ -8,16 +8,17 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 
 import { MponehomeComponent } from './mponehome.component';
-import { MponeaddproductsComponent } from './mponecomponents/mponeaddproducts/mponeaddproducts.component';
-import { MponelistproductsComponent } from './mponecomponents/mponelistproducts//mponelistproducts.component';
+import { MponeaddpaymentComponent } from './mponecomponents/mponeaddpayment/mponeaddpayment.component';
+import { MponelistpaymentsComponent } from './mponecomponents/mponelistpayments/mponelistpayments.component';
+
 import { MiniprojectoneroutingModule } from './miniprojectonerouting.module';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    MponeaddproductsComponent,
+    MponeaddpaymentComponent,
     MponehomeComponent,
-    MponelistproductsComponent,
+    MponelistpaymentsComponent
   ],
   imports: [
     CommonModule,

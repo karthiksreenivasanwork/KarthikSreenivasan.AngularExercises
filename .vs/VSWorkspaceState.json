@@ -3,9 +3,8 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\ng-switch-directive",
-    "\\src\\app\\producttracking"
+    "\\src\\app\\miniprojectone"
   ],
-  "SelectedNode": "\\src\\app\\ng-switch-directive\\ng-switch-directive.component.html",
+  "SelectedNode": "\\src\\app\\miniprojectone\\mponehome.component.ts",
   "PreviewInSolutionExplorer": false
 }
