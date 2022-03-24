@@ -58,6 +58,39 @@ export class MponeuserService {
   }
 
   /**
+   * Remove a payment detail from the collection based on the payer's name.
+   * @param name Payer's name
+   * @returns True if the removal was successful and false otherwise.
+   */
+  removePaymentDetail(name: string): boolean {
+    let hasPaymentDetailDeleted: boolean = false;
+
+    var deleteIndex = -1;
+    /**
+     * The difference between filter and some is that
+     * the filter method iterates through all elements even if found
+     * but the some does not which makes it a lot faster.
+     */
+    let productDetail = this._paymentCollection.some(
+      (paymentDetail, index) => {
+        deleteIndex = index;
+        return paymentDetail.name == name;
+      }
+    );
+
+    if (!productDetail) {
+      return hasPaymentDetailDeleted;
+    } else {
+      this._paymentCollection.splice(deleteIndex, 1);
+      hasPaymentDetailDeleted = true;
+    }
+
+    this._paymentCollectionObservable.next(this._paymentCollection);
+
+    return hasPaymentDetailDeleted;
+  }
+
+  /**
    * Get the total count of all the products
    */
   public get TotalPaymentCount(): number {

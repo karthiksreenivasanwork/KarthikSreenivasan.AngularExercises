@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { PaymentDetails } from '../../models/paymentdetails';
+
 import { MponeuserService } from '../../mponeservice/mponeuser.service';
+import { PaymentValidation } from '../../validation/paymentvalidation';
 
 @Component({
   selector: 'app-mponeaddpayment',
@@ -19,15 +22,36 @@ export class MponeaddpaymentComponent implements OnInit {
   ngOnInit(): void {}
 
   onAddPaymentClick() {
-    if (
-      this.userService.addPaymentDetails(
-        this._inputName,
-        this._inputPrice,
-        this._inputCardNumber
-      )
-    ) {
-      this.clearData();
+    let paymentdetails = this.getUserInput();
+
+    try {
+      if (PaymentValidation.validate(paymentdetails)) {
+        if (
+          this.userService.addPaymentDetails(
+            this._inputName,
+            this._inputPrice,
+            this._inputCardNumber
+          )
+        ) {
+          this.clearData();
+        }
+      } else {
+        this.errorMessage = PaymentValidation.ValidationError;
+      }
+    } catch (exceptionRef) {
+      if (exceptionRef instanceof Error) {
+        console.log(exceptionRef.message);
+      }
     }
+  }
+
+  getUserInput(): PaymentDetails {
+    return {
+      position: 0, //Just a dummy value
+      name: this._inputName,
+      price: this._inputPrice,
+      cardnumber: this._inputCardNumber,
+    };
   }
 
   clearData() {

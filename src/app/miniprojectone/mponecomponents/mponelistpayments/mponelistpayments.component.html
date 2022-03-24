@@ -42,7 +42,7 @@
             <th mat-header-cell *matHeaderCellDef>Operations</th>
             <td mat-cell *matCellDef="let element" class="flex-cell-row">
               <div class="buttonEditOnGrid" (click)="onedit()">Edit</div>
-              <div class="buttonDeleteOnGrid" (click)="ondelete()">Delete</div>
+              <div class="buttonDeleteOnGrid" (click)="ondelete(element.name)">Delete</div>
             </td>
           </ng-container>
 

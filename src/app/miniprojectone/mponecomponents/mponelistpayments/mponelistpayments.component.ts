@@ -30,10 +30,11 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this._paymentCollectionObservable
-      .subscribe((updatedProductCollection: PaymentDetails[]) => {
+    this._paymentCollectionObservable.subscribe(
+      (updatedProductCollection: PaymentDetails[]) => {
         this.datasource.data = updatedProductCollection;
-      });
+      }
+    );
   }
 
   ngOnDestroy(): void {
@@ -43,5 +44,7 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
 
   onedit() {}
 
-  ondelete() {}
+  ondelete(name: string) {
+    this.mponeuserService.removePaymentDetail(name);
+  }
 }
