@@ -1,48 +1,28 @@
 .flex-container {
-  height: auto;
-  width: 100%;
-  padding: 0;
-  margin: 0;
   display: flex;
   flex-direction: column;
+  height: auto;
+  width: 100%;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 0px 10px;
 }
 
 .flex-item-column {
   display: flex;
   flex-direction: column;
-
-  border-radius: 5px;
-  margin: 10px;
-  padding: 2px 0px 2px 20px;
+  width: 100%;
 }
 
-.flex--item-row {
-  margin: 10px;
-  padding: 2px 0px 2px 20px;
-  align-items: center;
-  width:90%;
-}
-
-h3,
-h4 {
-  line-height: 0px;
-}
-
-.subHeading {
-  text-decoration: underline;
-  font-size: 18px;
-}
-
-.formatListTag {
-  line-height: 2;
+.flex-item-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .matInputField {
   width: 100%;
 }
 
-mat-expansion-panel {
-  width: 100%;
+button {
+  margin: 5px;
 }

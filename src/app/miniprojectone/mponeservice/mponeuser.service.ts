@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 
 import { PaymentDetails } from '../models/paymentdetails';
@@ -12,7 +12,11 @@ import { PaymentDetails } from '../models/paymentdetails';
   providedIn: 'root',
 })
 export class MponeuserService {
+  @Output() onPaymentEditedEvent = new EventEmitter<PaymentDetails>();
+
   private _paymentCollection: PaymentDetails[] = [];
+  private _rowIndex: number = 0;
+
   /**
    * Emits the collection from this service whenever we need to update the subscribers.
    *
@@ -29,18 +33,28 @@ export class MponeuserService {
    */
   private _paymentCollectionObservable = new Subject<PaymentDetails[]>();
 
-  constructor() {}
-
+  /**
+   * Returns the payment as an observable collection
+   * @returns Returns an obervable collection of the payment details.
+   */
   getAllPayments(): Subject<PaymentDetails[]> {
     return this._paymentCollectionObservable;
   }
 
+  /**
+   * Add a new payment information.
+   * @param name Name information
+   * @param price Price information
+   * @param cardnumber Card number information
+   * @returns True if the payment details were successfully recorded and false otherwise.
+   */
   addPaymentDetails(name: string, price: number, cardnumber: number): boolean {
     let hasPaymentAdded = false;
 
     try {
+      this._rowIndex += 1;
       this._paymentCollection.push({
-        position: this._paymentCollection.length + 1,
+        position: this._rowIndex,
         name: name,
         price: price,
         cardnumber: cardnumber,
@@ -58,6 +72,38 @@ export class MponeuserService {
   }
 
   /**
+   * Update an existing payment information.
+   * @param paramPosition Unique row index that identifies the record to edit.
+   * @param name Name information
+   * @param price Price information
+   * @param cardnumber Card number information
+   * @returns True if the payment details were successfully recorded and false otherwise.
+   */
+  updatePaymentDetails(
+    paramPosition: number,
+    paramName: string,
+    paramPrice: number,
+    paramCardnumber: number
+  ): boolean {
+    let hasPaymentUpdated = false;
+
+    try {
+      let index = this._paymentCollection.findIndex((productDetail) => {
+        return productDetail.position == paramPosition;
+      });
+
+      if (index != -1) {
+        this._paymentCollection[index].name = paramName;
+        this._paymentCollection[index].price = paramPrice;
+        this._paymentCollection[index].cardnumber = paramCardnumber;
+        hasPaymentUpdated = true;
+      }
+    } catch (exceptionRef) {}
+
+    return hasPaymentUpdated;
+  }
+
+  /**
    * Remove a payment detail from the collection based on the payer's name.
    * @param name Payer's name
    * @returns True if the removal was successful and false otherwise.
@@ -71,12 +117,10 @@ export class MponeuserService {
      * the filter method iterates through all elements even if found
      * but the some does not which makes it a lot faster.
      */
-    let productDetail = this._paymentCollection.some(
-      (paymentDetail, index) => {
-        deleteIndex = index;
-        return paymentDetail.name == name;
-      }
-    );
+    let productDetail = this._paymentCollection.some((paymentDetail, index) => {
+      deleteIndex = index;
+      return paymentDetail.name == name;
+    });
 
     if (!productDetail) {
       return hasPaymentDetailDeleted;
@@ -95,5 +139,18 @@ export class MponeuserService {
    */
   public get TotalPaymentCount(): number {
     return this._paymentCollection.length;
+  }
+
+  /**
+   * Helps change detection with relevant data between listpayment and add payment component when the edit buton is clicked
+   * @param paymentDetailsToUpdate Payment details to update
+   */
+  onPaymentEdited(paymentDetailsToUpdate: PaymentDetails) {
+    /**
+     * How to invoke an event from one component to another ?
+     * Solution: Service
+     * Link: https://stackoverflow.com/questions/52413873/angular-invoking-a-function-in-one-component-with-events-on-another-component
+     */
+    this.onPaymentEditedEvent.emit(paymentDetailsToUpdate);
   }
 }

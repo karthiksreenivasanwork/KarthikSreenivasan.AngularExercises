@@ -1,3 +1,7 @@
+mat-expansion-panel {
+  width: 100%;
+}
+
 .flex-container {
   height: auto;
   width: auto;
@@ -10,9 +14,24 @@
 
 .flex-container-border {
   border: 3px solid rgb(0, 165, 143);
+  width: 600px;
 }
 
 .scrollable-container {
-  max-height: 550px;
-  overflow-y: auto;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+h3,
+h4 {
+  line-height: 0px;
+}
+
+.subHeading {
+  text-decoration: underline;
+  font-size: 18px;
+}
+
+.formatListTag {
+  line-height: 2;
 }

@@ -3,8 +3,13 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\miniprojectone"
+    "\\src\\app\\miniprojectone",
+    "\\src\\app\\miniprojectone\\mponecomponents",
+    "\\src\\app\\miniprojectone\\mponecomponents\\mponeaddpayment",
+    "\\src\\app\\miniprojectone\\mponecomponents\\mponelistpayments",
+    "\\src\\app\\miniprojectone\\mponeservice",
+    "\\src\\app\\miniprojectone\\validation"
   ],
-  "SelectedNode": "\\src\\app\\miniprojectone\\mponehome.component.ts",
+  "SelectedNode": "\\src\\app\\miniprojectone\\mponecomponents\\mponeaddpayment\\mponeaddpayment.component.html",
   "PreviewInSolutionExplorer": false
 }

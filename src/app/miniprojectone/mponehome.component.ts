@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PaymentDetails } from './models/paymentdetails';
 
 @Component({
   selector: 'app-mponehome',
@@ -6,12 +7,5 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mponehome.component.scss']
 })
 export class MponehomeComponent implements OnInit {
-
-  constructor() {
-    console.log("mini project home page loaded.");
-   }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

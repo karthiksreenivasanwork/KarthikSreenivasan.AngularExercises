@@ -25,26 +25,58 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
   datasource = new MatTableDataSource<PaymentDetails>();
   _paymentCollectionObservable = new Subject<PaymentDetails[]>();
 
+  /**
+   * Initialize
+   * @param mponeuserService User service that is being injected via Dependency injection.
+   */
   constructor(public mponeuserService: MponeuserService) {
     this._paymentCollectionObservable = this.mponeuserService.getAllPayments();
   }
 
   ngOnInit(): void {
     this._paymentCollectionObservable.subscribe(
+      //Fires everytime a new record is added rebind to the grid.
       (updatedProductCollection: PaymentDetails[]) => {
         this.datasource.data = updatedProductCollection;
       }
     );
   }
 
+  /**
+   * Event handled when the component is destoryed.
+   */
   ngOnDestroy(): void {
     //To avoid memory leaks.
     this._paymentCollectionObservable.unsubscribe();
   }
 
-  onedit() {}
+  /**
+   * Event handler when edit button is clicked in the data grid.
+   * @param paramPosition Item index of the record to be edited.
+   * @param paramName Name information
+   * @param paramPrice Price information
+   * @param paramCardnumber Card information
+   */
+  onEditClick(
+    paramPosition: number,
+    paramName: string,
+    paramPrice: number,
+    paramCardnumber: number
+  ) {
+    let paymentDetailsToEdit: PaymentDetails = {
+      position: paramPosition,
+      name: paramName,
+      price: paramPrice,
+      cardnumber: paramCardnumber,
+    };
+    this.mponeuserService.onPaymentEdited(paymentDetailsToEdit);
+  }
 
-  ondelete(name: string) {
+  /**
+   * Event handler when delete button is clicked in the data grid.
+   * @param name Name information
+   */
+  onDeleteClick(name: string) {
     this.mponeuserService.removePaymentDetail(name);
   }
 }

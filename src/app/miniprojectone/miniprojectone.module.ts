@@ -7,9 +7,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 import { MponehomeComponent } from './mponehome.component';
-import { MponeaddpaymentComponent } from './mponecomponents/mponeaddpayment/mponeaddpayment.component';
+import {
+  MponeaddpaymentComponent,
+  MponeaddpaymentDialogComponent,
+} from './mponecomponents/mponeaddpayment/mponeaddpayment.component';
 import { MponelistpaymentsComponent } from './mponecomponents/mponelistpayments/mponelistpayments.component';
 
 import { MiniprojectoneroutingModule } from './miniprojectonerouting.module';
@@ -17,9 +21,10 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    MponeaddpaymentComponent,
     MponehomeComponent,
-    MponelistpaymentsComponent
+    MponeaddpaymentComponent,
+    MponeaddpaymentDialogComponent,
+    MponelistpaymentsComponent,
   ],
   imports: [
     CommonModule,
@@ -32,7 +37,8 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatSelectModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule,
   ],
 })
 export class MiniprojectoneModule {}
