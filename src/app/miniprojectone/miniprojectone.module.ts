@@ -18,6 +18,7 @@ import { MponelistpaymentsComponent } from './mponecomponents/mponelistpayments/
 
 import { MiniprojectoneroutingModule } from './miniprojectonerouting.module';
 import { FormsModule } from '@angular/forms';
+import { CardnumbermaskPipe } from './mponecustompipe/cardnumbermask.pipe';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     MponeaddpaymentComponent,
     MponeaddpaymentDialogComponent,
     MponelistpaymentsComponent,
+    CardnumbermaskPipe,
   ],
   imports: [
     CommonModule,

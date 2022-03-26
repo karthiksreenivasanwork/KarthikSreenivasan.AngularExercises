@@ -10,6 +10,10 @@ import { MponeuserService } from '../../mponeservice/mponeuser.service';
   styleUrls: ['./mponelistpayments.component.scss'],
 })
 export class MponelistpaymentsComponent implements OnInit, OnDestroy {
+  dropDownData: string = '';
+  searchColumnCollection = new Map<string, string>();
+  searchValue: string = '';
+
   displayedColumns: string[] = [
     'position',
     'name',
@@ -31,6 +35,10 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
    */
   constructor(public mponeuserService: MponeuserService) {
     this._paymentCollectionObservable = this.mponeuserService.getAllPayments();
+
+    this.searchColumnCollection.set('name', 'Name');
+    this.searchColumnCollection.set('price', 'Price');
+    this.searchColumnCollection.set('cardnumber', 'Card Number');
   }
 
   ngOnInit(): void {
