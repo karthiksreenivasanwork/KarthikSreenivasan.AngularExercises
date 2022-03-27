@@ -1,8 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subject } from 'rxjs';
-import { PaymentDetails } from '../../models/paymentdetails';
+
+import { IPaymentDetails } from '../../models/paymentdetails';
+import { FilterListPayments } from '../../mponeutils/mponefilterlistpayments';
 import { MponeuserService } from '../../mponeservice/mponeuser.service';
+
+const LABEL_PAYMENT_COUNT: string = 'Payment Count';
+const LABEL_FILTERED_COUNT: string = 'Filtered Count';
 
 @Component({
   selector: 'app-mponelistpayments',
@@ -11,9 +16,14 @@ import { MponeuserService } from '../../mponeservice/mponeuser.service';
 })
 export class MponelistpaymentsComponent implements OnInit, OnDestroy {
   dropDownData: string = '';
-  searchColumnCollection = new Map<string, string>();
   searchValue: string = '';
+  errorMessage: string = '';
+  labelToDisplayVisiblePaymentDataCount: string = '';
 
+  isPaymentDataFiltered: boolean = false;
+  hasNoRecords : boolean = false;
+
+  searchColumnCollection = new Map<string, string>();
   displayedColumns: string[] = [
     'position',
     'name',
@@ -21,13 +31,12 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
     'cardnumber',
     'operations',
   ];
-
   /**
    * MatTableDataSource is required to update the mat table when the data source has been updated.
    * https://stackoverflow.com/questions/46746598/angular-material-how-to-refresh-a-data-source-mat-table
    */
-  datasource = new MatTableDataSource<PaymentDetails>();
-  _paymentCollectionObservable = new Subject<PaymentDetails[]>();
+  datasource = new MatTableDataSource<IPaymentDetails>();
+  _paymentCollectionObservable = new Subject<IPaymentDetails[]>();
 
   /**
    * Initialize
@@ -39,15 +48,22 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
     this.searchColumnCollection.set('name', 'Name');
     this.searchColumnCollection.set('price', 'Price');
     this.searchColumnCollection.set('cardnumber', 'Card Number');
+
+    this.labelToDisplayVisiblePaymentDataCount = LABEL_PAYMENT_COUNT;
   }
 
   ngOnInit(): void {
     this._paymentCollectionObservable.subscribe(
       //Fires everytime a new record is added rebind to the grid.
-      (updatedProductCollection: PaymentDetails[]) => {
+      (updatedProductCollection: IPaymentDetails[]) => {
         this.datasource.data = updatedProductCollection;
       }
     );
+
+    //Add default payment data.
+    this.mponeuserService.addPaymentDetails('Karthik', 2000, 4558758965115248);
+    this.mponeuserService.addPaymentDetails('Krishna', 3000, 4668758965115675);
+    this.mponeuserService.addPaymentDetails('Ram', 3500, 3888758965115999);
   }
 
   /**
@@ -71,7 +87,7 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
     paramPrice: number,
     paramCardnumber: number
   ) {
-    let paymentDetailsToEdit: PaymentDetails = {
+    let paymentDetailsToEdit: IPaymentDetails = {
       position: paramPosition,
       name: paramName,
       price: paramPrice,
@@ -86,5 +102,41 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
    */
   onDeleteClick(name: string) {
     this.mponeuserService.removePaymentDetail(name);
+  }
+
+  onInputSearchKeyUp() {
+    this.updateSearchDetails();
+  }
+
+  onSelectionValueChanged() {
+    this.updateSearchDetails();
+  }
+
+  updateSearchDetails() {
+    this.isPaymentDataFiltered = false;
+    this.hasNoRecords = false;
+    this.errorMessage = '';
+    this.labelToDisplayVisiblePaymentDataCount = LABEL_PAYMENT_COUNT;
+
+    if (
+      this.datasource.data.length > 0 &&
+      this.dropDownData.length > 0 &&
+      this.searchValue.length > 0
+    ) {
+      this.isPaymentDataFiltered = true;
+      this.labelToDisplayVisiblePaymentDataCount = LABEL_FILTERED_COUNT;
+
+      let filteredData: IPaymentDetails[] = [];
+      filteredData = FilterListPayments.applyFilter(
+        this.datasource.data,
+        this.dropDownData,
+        this.searchValue
+      );
+
+      if (filteredData.length == 0) {
+        this.hasNoRecords = true;
+        this.errorMessage = 'No records found';
+      }
+    }
   }
 }

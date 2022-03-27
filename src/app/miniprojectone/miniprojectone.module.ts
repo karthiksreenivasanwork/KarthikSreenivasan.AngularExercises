@@ -8,6 +8,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+import { MiniprojectoneroutingModule } from './miniprojectonerouting.module';
+import { FormsModule } from '@angular/forms';
 
 import { MponehomeComponent } from './mponehome.component';
 import {
@@ -16,17 +20,29 @@ import {
 } from './mponecomponents/mponeaddpayment/mponeaddpayment.component';
 import { MponelistpaymentsComponent } from './mponecomponents/mponelistpayments/mponelistpayments.component';
 
-import { MiniprojectoneroutingModule } from './miniprojectonerouting.module';
-import { FormsModule } from '@angular/forms';
 import { CardnumbermaskPipe } from './mponecustompipe/cardnumbermask.pipe';
+import { MponefilterlistpaymentPipe } from './mponecustompipe/mponefilterlistpayment.pipe';
+import { MponefilterlistpaymentcountPipe } from './mponecustompipe/mponefilterlistpaymentcount.pipe';
+import { CardimageselectorPipe } from './mponecustompipe/cardimageselector.pipe';
+import { FirstletteruppercasePipe } from './mponecustompipe/firstletteruppercase.pipe';
 
+import { CardnumberhyphenatorDirective } from './mponecustomdirective/cardnumberhyphenator.directive';
+import { CardnumberhyphenatorPipe } from './mponecustompipe/cardnumberhyphenator.pipe';
 @NgModule({
   declarations: [
     MponehomeComponent,
     MponeaddpaymentComponent,
     MponeaddpaymentDialogComponent,
     MponelistpaymentsComponent,
+
     CardnumbermaskPipe,
+    MponefilterlistpaymentPipe,
+    MponefilterlistpaymentcountPipe,
+    CardimageselectorPipe,
+    FirstletteruppercasePipe,
+
+    CardnumberhyphenatorDirective,
+     CardnumberhyphenatorPipe,
   ],
   imports: [
     CommonModule,
@@ -41,6 +57,7 @@ import { CardnumbermaskPipe } from './mponecustompipe/cardnumbermask.pipe';
     MatTableModule,
     MatDialogModule,
     MatButtonModule,
+    MatTooltipModule,
   ],
 })
 export class MiniprojectoneModule {}

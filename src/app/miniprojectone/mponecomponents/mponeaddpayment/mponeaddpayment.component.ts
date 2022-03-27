@@ -5,8 +5,9 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 
-import { PaymentDetails } from '../../models/paymentdetails';
+import { IPaymentDetails } from '../../models/paymentdetails';
 import { MponeuserService } from '../../mponeservice/mponeuser.service';
+import { CardNumberHelper } from '../../mponeutils/cardnumberhelper';
 import { PaymentValidation } from '../../validation/paymentvalidation';
 
 @Component({
@@ -16,13 +17,12 @@ import { PaymentValidation } from '../../validation/paymentvalidation';
 })
 export class MponeaddpaymentComponent implements OnInit {
   //2 way data binding
-  _inputName: string = 'Karthik';
-  _inputPrice: number = 2000;
-  _inputCardNumber: number = 4557275546893321;
+  _inputName: string = 'saravanan';
+  _inputPrice: number = 2500;
+  _inputCardNumber: string = '4557-2755-4689-3321';
+  errorMessage: string = '';
 
   modelPopupStatus: boolean = false;
-
-  errorMessage: string = '';
 
   constructor(
     public userService: MponeuserService,
@@ -31,22 +31,31 @@ export class MponeaddpaymentComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.onPaymentEditedEvent.subscribe(
-      (paymentDataToEdit: PaymentDetails) => {
+      (paymentDataToEdit: IPaymentDetails) => {
         this.onOpenDialog(paymentDataToEdit);
       }
     );
   }
 
   onAddPaymentClick() {
-    let paymentdetails = this.getUserInput();
-
     try {
-      if (PaymentValidation.validate(paymentdetails)) {
+      if (
+        PaymentValidation.validate(
+          this._inputName,
+          this._inputPrice.toString(),
+          this._inputCardNumber //Data returned from the UI as it is to validate.
+        )
+      ) {
         if (
+          //Format data to save without any text formatting.
           this.userService.addPaymentDetails(
             this._inputName,
             this._inputPrice,
-            this._inputCardNumber
+            Number(
+              CardNumberHelper.removeCardNumberWithHyphens(
+                this._inputCardNumber
+              )
+            )
           )
         ) {
           this.clearData();
@@ -70,29 +79,20 @@ export class MponeaddpaymentComponent implements OnInit {
    */
   onUpdateClick() {}
 
-  getUserInput(): PaymentDetails {
-    return {
-      position: 0, //Just a dummy value
-      name: this._inputName,
-      price: this._inputPrice,
-      cardnumber: this._inputCardNumber,
-    };
-  }
-
   clearData() {
     this._inputName = '';
     this._inputPrice = 0;
-    this._inputCardNumber = 0;
+    this._inputCardNumber = '0';
     this.errorMessage = '';
   }
 
-  onOpenDialog(paymentDetailsToEdit: PaymentDetails) {
+  onOpenDialog(paymentDetailsToEdit: IPaymentDetails) {
     const dialogRef = this.matDialog.open(MponeaddpaymentDialogComponent, {
       width: 'auto',
       data: paymentDetailsToEdit,
     });
 
-    dialogRef.afterClosed().subscribe((closeResult) => {
+    dialogRef.afterClosed().subscribe(() => {
       this.modelPopupStatus = false;
     });
   }
@@ -116,14 +116,16 @@ export class MponeaddpaymentDialogComponent
     public override userService: MponeuserService,
     public override matDialog: MatDialog,
     public dialogRef: MatDialogRef<MponeaddpaymentDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public paymentDetailsToEdit: PaymentDetails
+    @Inject(MAT_DIALOG_DATA) public paymentDetailsToEdit: IPaymentDetails
   ) {
     super(userService, matDialog);
 
     this._position = paymentDetailsToEdit.position;
     this._inputName = paymentDetailsToEdit.name;
     this._inputPrice = paymentDetailsToEdit.price;
-    this._inputCardNumber = paymentDetailsToEdit.cardnumber;
+    this._inputCardNumber = CardNumberHelper.getCardNumberWithHyphens(
+      paymentDetailsToEdit.cardnumber.toString()
+    );
   }
 
   override ngOnInit(): void {
@@ -138,7 +140,9 @@ export class MponeaddpaymentDialogComponent
       this._position,
       this._inputName,
       this._inputPrice,
-      this._inputCardNumber
+      Number(
+        CardNumberHelper.removeCardNumberWithHyphens(this._inputCardNumber)
+      )
     );
     this.dialogRef.close();
   }

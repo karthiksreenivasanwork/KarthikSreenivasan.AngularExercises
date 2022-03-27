@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { PaymentDetails } from '../models/paymentdetails';
+import { IPaymentDetails } from '../models/paymentdetails';
 
 /**
  * Injectable makes it so that, only if this is really used, will it be considered for
@@ -12,9 +12,9 @@ import { PaymentDetails } from '../models/paymentdetails';
   providedIn: 'root',
 })
 export class MponeuserService {
-  @Output() onPaymentEditedEvent = new EventEmitter<PaymentDetails>();
+  @Output() onPaymentEditedEvent = new EventEmitter<IPaymentDetails>();
 
-  private _paymentCollection: PaymentDetails[] = [];
+  private _paymentCollection: IPaymentDetails[] = [];
   private _rowIndex: number = 0;
 
   /**
@@ -31,13 +31,12 @@ export class MponeuserService {
    *
    * https://stackoverflow.com/questions/61628426/angular-7-service-not-updating-the-page-dynamically-its-getting-updated-after
    */
-  private _paymentCollectionObservable = new Subject<PaymentDetails[]>();
-
+  private _paymentCollectionObservable = new Subject<IPaymentDetails[]>();
   /**
    * Returns the payment as an observable collection
    * @returns Returns an obervable collection of the payment details.
    */
-  getAllPayments(): Subject<PaymentDetails[]> {
+  getAllPayments(): Subject<IPaymentDetails[]> {
     return this._paymentCollectionObservable;
   }
 
@@ -145,7 +144,7 @@ export class MponeuserService {
    * Helps change detection with relevant data between listpayment and add payment component when the edit buton is clicked
    * @param paymentDetailsToUpdate Payment details to update
    */
-  onPaymentEdited(paymentDetailsToUpdate: PaymentDetails) {
+  onPaymentEdited(paymentDetailsToUpdate: IPaymentDetails) {
     /**
      * How to invoke an event from one component to another ?
      * Solution: Service

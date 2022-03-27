@@ -19,7 +19,7 @@
   display: flex;
   justify-content: center;
   width: 90%;
-  .mat-form-field{
+  .mat-form-field {
     margin-left: 5px;
   }
 }
@@ -77,4 +77,9 @@ button {
 
 .matInputField {
   width: 100%;
+}
+
+::ng-deep .mat-tooltip {
+  font-size: 15px;
+  background-color: #b71c1c;
 }

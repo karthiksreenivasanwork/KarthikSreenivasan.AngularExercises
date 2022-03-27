@@ -15,7 +15,7 @@
 
 .flex-item-row {
   display: flex;
-  justify-content: center;
+  align-items: center; //Vertical
   width: 100%;
 }
 
@@ -23,6 +23,15 @@
   width: 100%;
 }
 
+.matInputTextField {
+  width: 80%;
+  padding: 5px;
+}
+
 button {
   margin: 5px;
+}
+
+.mponecardimage {
+  margin-left: 10px;
 }

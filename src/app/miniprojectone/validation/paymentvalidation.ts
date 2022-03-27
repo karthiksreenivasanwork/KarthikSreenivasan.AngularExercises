@@ -1,5 +1,6 @@
 import { Type } from '@angular/core';
-import { PaymentDetails } from '../models/paymentdetails';
+import { IPaymentDetails } from '../models/paymentdetails';
+import { CardNumberHelper } from '../mponeutils/cardnumberhelper';
 /**
  * Validates the payment details model
  */
@@ -8,29 +9,30 @@ export class PaymentValidation {
 
   constructor() {}
 
-  static validate(paymentDetails: PaymentDetails): boolean {
+  static validate(
+    nameParam: string,
+    priceParam: string,
+    cardNumberParam: string
+  ): boolean {
     let isValid = false;
+    let priceAsNumber: number = Number(priceParam);
+    let cardNumberwithoutHyphen: number = Number(
+      CardNumberHelper.removeCardNumberWithHyphens(cardNumberParam)
+    );
 
-    if (paymentDetails == null) {
-      this._validationErrors = `'paymentDetails' parameter cannot be null at class PaymentValidation`;
-      throw new Error(this._validationErrors);
-    }
-
-    if (paymentDetails.name == '') {
+    if (nameParam == '') {
       this._validationErrors = 'Name cannot be empty';
+    } else if (isNaN(priceAsNumber) || priceAsNumber <= 0) {
+      this._validationErrors = 'Invalid price';
+      return isValid;
     } else if (
-      isNaN(paymentDetails.price) ||
-      isNaN(paymentDetails.cardnumber)
+      isNaN(cardNumberwithoutHyphen) ||
+      cardNumberwithoutHyphen == 0 ||
+      cardNumberwithoutHyphen < 15
     ) {
-      this._validationErrors = 'Invalid Price or Card Number';
-    } else if (paymentDetails.price <= 0) {
-      this._validationErrors = 'Price cannot be zero or less';
-    } else if (paymentDetails.cardnumber == 0) {
-      this._validationErrors = 'Card Number cannot be zero';
-    } else if (paymentDetails.cardnumber.toString().length < 15) {
-      this._validationErrors = 'Invalid Card Number';
+      this._validationErrors = 'Invalid card number';
+      return isValid;
     } else isValid = true;
-
     return isValid;
   }
 

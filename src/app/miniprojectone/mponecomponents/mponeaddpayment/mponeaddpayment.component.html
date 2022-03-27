@@ -23,20 +23,30 @@
         placeholder="Total cost"
         [(ngModel)]="_inputPrice"
         autocomplete="off"
-        pattern="\d*" maxlength="8"
+        pattern="\d*"
+        maxlength="8"
       />
     </mat-form-field>
-    <mat-form-field class="matInputField" appearance="fill">
-      <mat-label>Card Number</mat-label>
-      <input
-        matInput
-        type="text"
-        placeholder="Credit card number"
-        [(ngModel)]="_inputCardNumber"
-        autocomplete="off"
-        pattern="\d*" maxlength="16"
-      />
-    </mat-form-field>
+    <div class="flex-item-row">
+      <mat-form-field class="matInputTextField" appearance="fill">
+        <mat-label>Card Number</mat-label>
+        <input
+          matInput
+          appCardnumberhyphenator
+          type="text"
+          placeholder="XXXX-XXXX-XXXX-XXXX"
+          [(ngModel)]="_inputCardNumber"
+          autocomplete="off"
+          maxlength="19"
+        />
+      </mat-form-field>
+      <i
+        class="fa fa-3x fa-brands {{
+          _inputCardNumber.toString() | cardimageselector
+        }} mponecardimage"
+      >
+      </i>
+    </div>
   </div>
   <div class="flex-item-row" *ngIf="!modelPopupStatus">
     <button mat-raised-button color="primary" (click)="onAddPaymentClick()">
