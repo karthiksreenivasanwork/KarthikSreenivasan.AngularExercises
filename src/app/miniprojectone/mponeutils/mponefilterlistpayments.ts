@@ -34,7 +34,7 @@ export abstract class FilterListPayments {
       switch (paymentDetailProperty) {
         case 'price': //Price is always exact match
           if (
-            paymentDetailvalue.toLowerCase() == searchValueParam.toLowerCase()
+            paymentDetailvalue == searchValueParam
           ) {
             filteredPaymentDetailCollection.push(
               paymentDetailCollectionParam[i]
@@ -53,6 +53,7 @@ export abstract class FilterListPayments {
           }
       }
     }
+    //console.log(JSON.stringify(filteredPaymentDetailCollection));
     return filteredPaymentDetailCollection;
   }
 }

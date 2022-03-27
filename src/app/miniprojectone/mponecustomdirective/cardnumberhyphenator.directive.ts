@@ -15,7 +15,7 @@ import { CardNumberHelper } from '../mponeutils/cardnumberhelper';
 export class CardnumberhyphenatorDirective {
   constructor(public elementReferenceService: ElementRef) {}
 
-  @HostListener('keyup') onInputCardNumberKeyUp() {
+  @HostListener('keypress') onInputCardNumberKeyUp() {
     //This is equivalent to - document.getElementByID in Javascript.
     let cardNumberValue: string =
       this.elementReferenceService.nativeElement.value;
