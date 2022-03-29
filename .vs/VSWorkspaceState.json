@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\codingexercises",
     "\\src\\app\\miniprojectone",
     "\\src\\app\\miniprojectone\\models",
     "\\src\\app\\miniprojectone\\mponecustomdirective",
     "\\src\\app\\miniprojectone\\mponecustompipe",
     "\\src\\app\\miniprojectone\\mponeservice",
+    "\\src\\app\\miniprojectone\\mponeutils",
     "\\src\\app\\miniprojectone\\validation"
   ],
-  "SelectedNode": "\\src\\app\\miniprojectone\\mponecustompipe\\mponefilterlistpayment.pipe.ts",
+  "SelectedNode": "\\src\\app\\miniprojectone\\models\\paymentdetails.ts",
   "PreviewInSolutionExplorer": false
 }
