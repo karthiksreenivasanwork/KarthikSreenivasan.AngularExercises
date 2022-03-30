@@ -1,6 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Subject } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 
 import { IPaymentDetails } from '../../models/paymentdetails';
 import { FilterListPayments } from '../../mponeutils/mponefilterlistpayments';
@@ -15,15 +20,25 @@ const LABEL_FILTERED_COUNT: string = 'Filtered Count';
   styleUrls: ['./mponelistpayments.component.scss'],
 })
 export class MponelistpaymentsComponent implements OnInit, OnDestroy {
-  dropDownData: string = '';
-  searchValue: string = '';
+  @Input() dataFilterCriteria: string = '';
+  @Input() dataFilterSearchValue: string = '';
+  /**
+   * Separate Subscription object reference to unsubscribe after use.
+   */
+  private eventSubscriptions: Subscription[] = [];
+  /**
+   * Converting eventsSubject to an Observable,
+   * prevent the child-component to call next()
+   */
+  @Input() events: Observable<void>; //Receive an event from the parent.
+
+  isPaymentDataFiltered: boolean = false;
+
   errorMessage: string = '';
   labelToDisplayVisiblePaymentDataCount: string = '';
 
-  isPaymentDataFiltered: boolean = false;
-  hasNoRecords : boolean = false;
+  hasNoRecords: boolean = false;
 
-  searchColumnCollection = new Map<string, string>();
   displayedColumns: string[] = [
     'position',
     'name',
@@ -36,34 +51,35 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
    * https://stackoverflow.com/questions/46746598/angular-material-how-to-refresh-a-data-source-mat-table
    */
   datasource = new MatTableDataSource<IPaymentDetails>();
-  _paymentCollectionObservable = new Subject<IPaymentDetails[]>();
+  _paymentCollectionObservable = new Observable<IPaymentDetails[]>();
 
   /**
    * Initialize
    * @param mponeuserService User service that is being injected via Dependency injection.
    */
   constructor(public mponeuserService: MponeuserService) {
-    this._paymentCollectionObservable = this.mponeuserService.getAllPayments();
-
-    this.searchColumnCollection.set('name', 'Name');
-    this.searchColumnCollection.set('price', 'Price');
-    this.searchColumnCollection.set('cardnumber', 'Card Number');
-
     this.labelToDisplayVisiblePaymentDataCount = LABEL_PAYMENT_COUNT;
   }
 
   ngOnInit(): void {
-    this._paymentCollectionObservable.subscribe(
-      //Fires everytime a new record is added rebind to the grid.
-      (updatedProductCollection: IPaymentDetails[]) => {
-        this.datasource.data = updatedProductCollection;
-      }
+    this._paymentCollectionObservable = this.mponeuserService.getAllPayments();
+    this.eventSubscriptions.push(
+      this._paymentCollectionObservable.subscribe(
+        //Fires everytime a new record is added to the grid.
+        (updatedProductCollection: IPaymentDetails[]) => {
+          this.datasource.data = updatedProductCollection;
+        }
+      )
     );
-
     //Add default payment data.
     this.mponeuserService.addPaymentDetails('Karthik', 2000, 4558758965115248);
     this.mponeuserService.addPaymentDetails('Krishna', 3000, 4668758965115675);
     this.mponeuserService.addPaymentDetails('Ram', 3500, 3888758965115999);
+
+    //Fires everytime a search filter is applied in the parent component.
+    this.eventSubscriptions.push(
+      this.events.subscribe(() => this.updateSearchDetails())
+    );
   }
 
   /**
@@ -71,7 +87,9 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
    */
   ngOnDestroy(): void {
     //To avoid memory leaks.
-    this._paymentCollectionObservable.unsubscribe();
+    this.eventSubscriptions.forEach((subReference) => {
+      subReference.unsubscribe();
+    });
   }
 
   /**
@@ -104,14 +122,6 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
     this.mponeuserService.removePaymentDetail(name);
   }
 
-  onInputSearchKeyUp() {
-    this.updateSearchDetails();
-  }
-
-  onSelectionValueChanged() {
-    this.updateSearchDetails();
-  }
-
   updateSearchDetails() {
     this.isPaymentDataFiltered = false;
     this.hasNoRecords = false;
@@ -120,8 +130,8 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
 
     if (
       this.datasource.data.length > 0 &&
-      this.dropDownData.length > 0 &&
-      this.searchValue.length > 0
+      this.dataFilterCriteria.length > 0 &&
+      this.dataFilterSearchValue.length > 0
     ) {
       this.isPaymentDataFiltered = true;
       this.labelToDisplayVisiblePaymentDataCount = LABEL_FILTERED_COUNT;
@@ -129,8 +139,8 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
       let filteredData: IPaymentDetails[] = [];
       filteredData = FilterListPayments.applyFilter(
         this.datasource.data,
-        this.dropDownData,
-        this.searchValue
+        this.dataFilterCriteria,
+        this.dataFilterSearchValue
       );
 
       if (filteredData.length == 0) {
