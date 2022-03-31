@@ -7,16 +7,21 @@ import { ProducttrackingComponent } from './codingexercises/producttracking/prod
 
 import { MiniprojectoneModule } from './/miniprojectone/miniprojectone.module';
 import { TexttransformComponent } from './codingexercises/texttransform/texttransform.component';
+import { ComponentinteractionsComponent } from './codingexercises/componentinteractions/componentinteractions.component';
 
 // sets up routes constant where you define your routes
 const routes: Routes = [
   { path: 'exonebinding', component: ProducttrackingComponent },
   { path: 'extwodirective', component: ListproductsComponent },
   { path: 'exthreengswitch', component: NgSwitchDirectiveComponent },
-  { path: 'extexttransformer', component: TexttransformComponent },
+  { path: 'exfivetexttransformer', component: TexttransformComponent },
+  {
+    path: 'exsixcomponentinterations',
+    component: ComponentinteractionsComponent,
+  },
 
   { path: 'miniprojectone', loadChildren: () => MiniprojectoneModule },
-  { path: '**', redirectTo: 'miniprojectone' },
+  { path: '**', redirectTo: 'exsixcomponentinterations' },
 ];
 
 @NgModule({

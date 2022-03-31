@@ -5,7 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -20,6 +21,9 @@ import { TtordinalpipePipe } from './codingexercises/texttransform/texttransform
 import { TtcleanwordPipe } from './codingexercises/texttransform/texttransformpipes/ttcleanword.pipe';
 import { TtCaseChangerPipe } from './codingexercises/texttransform/texttransformpipes/ttcasechanger.pipe';
 import { TtreversestringPipe } from './codingexercises/texttransform/texttransformpipes/ttreversestring.pipe';
+import { ComponentinteractionsComponent } from './codingexercises/componentinteractions/componentinteractions.component';
+import { CiactivecproductsComponent } from './codingexercises/componentinteractions/ciactivecproducts/ciactivecproducts.component';
+import { CiinactivecproductsComponent } from './codingexercises/componentinteractions/ciinactivecproducts/ciinactivecproducts.component';
 
 @NgModule({
   declarations: [
@@ -32,18 +36,22 @@ import { TtreversestringPipe } from './codingexercises/texttransform/texttransfo
     TtcleanwordPipe,
     TtCaseChangerPipe,
     TtreversestringPipe,
+    ComponentinteractionsComponent,
+    CiactivecproductsComponent,
+    CiinactivecproductsComponent,
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
     MatExpansionModule,
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatButtonModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

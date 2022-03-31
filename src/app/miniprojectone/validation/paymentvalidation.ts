@@ -1,5 +1,3 @@
-import { Type } from '@angular/core';
-import { IPaymentDetails } from '../models/paymentdetails';
 import { CardNumberHelper } from '../mponeutils/cardnumberhelper';
 /**
  * Validates the payment details model

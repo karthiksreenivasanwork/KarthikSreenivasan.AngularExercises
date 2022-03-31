@@ -1,0 +1,26 @@
+.flex-row-container {
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+  }
+  
+  .flex-item {
+    margin: 5px;
+  }
+  
+  .heading {
+    text-decoration: underline;
+    color: rgba($color: #b43c1e, $alpha: 1);
+  }
+  
+  .logo-active-product {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .product-label {
+    font-size: 17px;
+    font-weight: bold;
+  }
+  

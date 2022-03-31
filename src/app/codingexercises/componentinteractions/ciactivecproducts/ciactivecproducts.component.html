@@ -1,0 +1,32 @@
+<h2 class="heading">Active Products - {{activeProductCollection.length}}</h2>
+<div
+  *ngFor="let activeProduct of activeProductCollection"
+  class="flex-row-container"
+>
+  <!--
+      Separate DIV tags used here for product display in H2 as well as button.
+      Reason: Prevents button size from not expanding to the size of h2 tag vertically.
+    -->
+
+  <div class="flex-item">
+    <img
+      class="logo-active-product"
+      src="../../../../assets/Icons/{{ activeProductLogo }}"
+    />
+  </div>
+
+  <div class="flex-item">
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="onDeActivateClick(activeProduct)"
+    >
+      Deactivate
+    </button>
+  </div>
+
+  <div class="flex-item">
+    <span class="product-label">{{ activeProduct.ProductName }}</span>
+  </div>
+</div>
+<app-ciinactivecproducts [inputDeactivateProduct]="productToDeactivate" (productActivatedEvent)="OnProductActivated($event)"></app-ciinactivecproducts>
