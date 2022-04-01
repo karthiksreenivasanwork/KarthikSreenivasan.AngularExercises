@@ -23,7 +23,7 @@
   width: 100%;
 }
 
-.matInputTextField {
+.matCardNumberField {
   width: 80%;
   padding: 5px;
 }
@@ -34,4 +34,13 @@ button {
 
 .mponecardimage {
   margin-left: 10px;
+}
+
+.errorInputDisplay {
+  background-color: rgba($color: #d17575, $alpha: 1);
+  color: rgba($color: #ffffff, $alpha: 1);
+  padding: 3px;
+  border: solid 1px red;
+  border-radius: 20px;
+  text-align: center;
 }

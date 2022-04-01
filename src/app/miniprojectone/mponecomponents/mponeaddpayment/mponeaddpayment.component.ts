@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ChangeDetectorRef,
   Component,
   Inject,
   OnInit,
@@ -103,7 +104,8 @@ export class MponeaddpaymentDialogComponent
     public override userService: MponeuserService,
     public override matDialog: MatDialog,
     public dialogRef: MatDialogRef<MponeaddpaymentDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public paymentDetailsToEdit: IPaymentDetails
+    @Inject(MAT_DIALOG_DATA) public paymentDetailsToEdit: IPaymentDetails,
+    public changeDetectionRef: ChangeDetectorRef
   ) {
     super(userService, matDialog);
   }
@@ -115,6 +117,7 @@ export class MponeaddpaymentDialogComponent
     this.inputEditCardNumber = CardNumberHelper.getCardNumberWithHyphens(
       this.paymentDetailsToEdit.cardnumber.toString()
     );
+    this.changeDetectionRef.detectChanges();
   }
 
   override ngOnInit(): void {

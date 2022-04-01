@@ -57,7 +57,7 @@ import { CardnumberhyphenatorPipe } from './mponecustompipe/cardnumberhyphenator
     MatTableModule,
     MatDialogModule,
     MatButtonModule,
-    MatTooltipModule,
+    MatTooltipModule
   ],
 })
 export class MiniprojectoneModule {}
