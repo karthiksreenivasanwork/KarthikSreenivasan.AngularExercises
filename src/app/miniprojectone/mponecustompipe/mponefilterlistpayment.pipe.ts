@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { IPaymentDetails } from '../models/paymentdetails';
+import { IPaymentDetails } from '../models/ipaymentdetails';
 import { FilterListPayments } from '../mponeutils/mponefilterlistpayments';
 
 @Pipe({

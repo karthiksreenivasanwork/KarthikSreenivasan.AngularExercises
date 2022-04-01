@@ -7,7 +7,7 @@ import {
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable, Subject, Subscription } from 'rxjs';
 
-import { IPaymentDetails } from '../../models/paymentdetails';
+import { IPaymentDetails } from '../../models/ipaymentdetails';
 import { FilterListPayments } from '../../mponeutils/mponefilterlistpayments';
 import { MponeuserService } from '../../mponeservice/mponeuser.service';
 
@@ -72,9 +72,9 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
       )
     );
     //Add default payment data.
-    this.mponeuserService.addPaymentDetails('Karthik', 2000, 4558758965115248);
-    this.mponeuserService.addPaymentDetails('Krishna', 3000, 4668758965115675);
-    this.mponeuserService.addPaymentDetails('Ram', 3500, 3888758965115999);
+    this.mponeuserService.addPaymentDetails('Karthik', 2000, "4558758965115248");
+    this.mponeuserService.addPaymentDetails('Krishna', 3000, "4668758965115675");
+    this.mponeuserService.addPaymentDetails('Ram', 3500, "3888758965115999");
 
     //Fires everytime a search filter is applied in the parent component.
     this.eventSubscriptions.push(
@@ -103,7 +103,7 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
     paramPosition: number,
     paramName: string,
     paramPrice: number,
-    paramCardnumber: number
+    paramCardnumber: string
   ) {
     let paymentDetailsToEdit: IPaymentDetails = {
       position: paramPosition,

@@ -5,12 +5,11 @@
     "\\src\\app",
     "\\src\\app\\codingexercises",
     "\\src\\app\\codingexercises\\componentinteractions",
-    "\\src\\app\\codingexercises\\componentinteractions\\ciactivecproducts",
+    "\\src\\app\\codingexercises\\componentinteractions\\ciinactivecproducts",
     "\\src\\app\\miniprojectone",
     "\\src\\app\\miniprojectone\\mponeservice",
     "\\src\\app\\miniprojectone\\mponeutils",
     "\\src\\app\\miniprojectone\\validation"
   ],
-  "SelectedNode": "\\src\\app\\app.component.html",
   "PreviewInSolutionExplorer": false
 }

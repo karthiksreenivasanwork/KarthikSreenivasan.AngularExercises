@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { IPaymentDetails } from '../models/paymentdetails';
+import { IPaymentDetails } from '../models/ipaymentdetails';
 
 /**
  * Injectable makes it so that, only if this is really used, will it be considered for
@@ -47,7 +47,7 @@ export class MponeuserService {
    * @param cardnumber Card number information
    * @returns True if the payment details were successfully recorded and false otherwise.
    */
-  addPaymentDetails(name: string, price: number, cardnumber: number): boolean {
+  addPaymentDetails(name: string, price: number, cardnumber: string): boolean {
     let hasPaymentAdded = false;
 
     try {
@@ -82,7 +82,7 @@ export class MponeuserService {
     paramPosition: number,
     paramName: string,
     paramPrice: number,
-    paramCardnumber: number
+    paramCardnumber: string
   ): boolean {
     let hasPaymentUpdated = false;
 
@@ -97,7 +97,9 @@ export class MponeuserService {
         this._paymentCollection[index].cardnumber = paramCardnumber;
         hasPaymentUpdated = true;
       }
-    } catch (exceptionRef) {}
+    } catch (exceptionRef) {
+      console.log(`Exception at updatePaymentDetails- ${exceptionRef}`);
+    }
 
     return hasPaymentUpdated;
   }

@@ -1,5 +1,7 @@
 mat-expansion-panel {
-  width: 100%;
+  margin: 5px;
+
+  border: 0.5px solid rgb(0, 165, 143);
 }
 
 .flex-container {
@@ -41,6 +43,7 @@ h4 {
   justify-content: center;
   .mat-form-field {
     margin-left: 5px;
+    margin-top: 10px;
   }
 }
 

@@ -1,25 +1,33 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Inject,
+  OnInit,
+} from '@angular/core';
+import { NgForm } from '@angular/forms';
 import {
   MatDialog,
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 
-import { IPaymentDetails } from '../../models/paymentdetails';
+import { IPaymentDetails } from '../../models/ipaymentdetails';
 import { MponeuserService } from '../../mponeservice/mponeuser.service';
 import { CardNumberHelper } from '../../mponeutils/cardnumberhelper';
-import { PaymentValidation } from '../../validation/paymentvalidation';
 
 @Component({
   selector: 'app-mponeaddpayment',
   templateUrl: './mponeaddpayment.component.html',
   styleUrls: ['./mponeaddpayment.component.scss'],
 })
-export class MponeaddpaymentComponent implements OnInit {
-  //2 way data binding
-  _inputName: string = 'saravanan';
-  _inputPrice: number = 2500;
-  _inputCardNumber: string = '4557-2755-4689-3321';
+export class MponeaddpaymentComponent implements OnInit, AfterViewInit {
+  /**
+   * Defined only for model to view data binding for performing updates.
+   */
+  inputEditName: string = '';
+  inputEditPrice: number = 0;
+  inputEditCardNumber: string = '';
+
   errorMessage: string = '';
 
   modelPopupStatus: boolean = false;
@@ -29,6 +37,8 @@ export class MponeaddpaymentComponent implements OnInit {
     public matDialog: MatDialog
   ) {}
 
+  ngAfterViewInit(): void {}
+
   ngOnInit(): void {
     this.userService.onPaymentEditedEvent.subscribe(
       (paymentDataToEdit: IPaymentDetails) => {
@@ -37,52 +47,29 @@ export class MponeaddpaymentComponent implements OnInit {
     );
   }
 
-  onAddPaymentClick() {
-    try {
-      if (
-        PaymentValidation.validate(
-          this._inputName,
-          this._inputPrice.toString(),
-          this._inputCardNumber //Data returned from the UI as it is to validate.
+  frmGetPaymentData(formValue: NgForm) {
+    console.log('Form Submitted');
+    console.log(formValue.value);
+
+    if (
+      //Format data to save without any text formatting.
+      this.userService.addPaymentDetails(
+        formValue.value.nameField,
+        formValue.value.priceField,
+        CardNumberHelper.removeCardNumberWithHyphens(
+          formValue.value.cardNumberField
         )
-      ) {
-        if (
-          //Format data to save without any text formatting.
-          this.userService.addPaymentDetails(
-            this._inputName,
-            this._inputPrice,
-            Number(
-              CardNumberHelper.removeCardNumberWithHyphens(
-                this._inputCardNumber
-              )
-            )
-          )
-        ) {
-          this.clearData();
-        }
-      } else {
-        this.errorMessage = PaymentValidation.ValidationError;
-      }
-    } catch (exceptionRef) {
-      if (exceptionRef instanceof Error) {
-        console.log(exceptionRef.message);
-      }
+      )
+    ) {
+      formValue.resetForm();
     }
   }
 
-  onClearClick() {
-    this.clearData();
+  onClearClick(formValue: NgForm) {
+    formValue.resetForm();
   }
 
-  /**
-   * This will be implemented by the derived class that extends as a dialog component.
-   */
-  onUpdateClick() {}
-
   clearData() {
-    this._inputName = '';
-    this._inputPrice = 0;
-    this._inputCardNumber = '0';
     this.errorMessage = '';
   }
 
@@ -108,7 +95,7 @@ export class MponeaddpaymentComponent implements OnInit {
 })
 export class MponeaddpaymentDialogComponent
   extends MponeaddpaymentComponent
-  implements OnInit
+  implements OnInit, AfterViewInit
 {
   _position: number = 0;
 
@@ -119,12 +106,14 @@ export class MponeaddpaymentDialogComponent
     @Inject(MAT_DIALOG_DATA) public paymentDetailsToEdit: IPaymentDetails
   ) {
     super(userService, matDialog);
+  }
 
-    this._position = paymentDetailsToEdit.position;
-    this._inputName = paymentDetailsToEdit.name;
-    this._inputPrice = paymentDetailsToEdit.price;
-    this._inputCardNumber = CardNumberHelper.getCardNumberWithHyphens(
-      paymentDetailsToEdit.cardnumber.toString()
+  override ngAfterViewInit(): void {
+    this._position = this.paymentDetailsToEdit.position;
+    this.inputEditName = this.paymentDetailsToEdit.name;
+    this.inputEditPrice = this.paymentDetailsToEdit.price;
+    this.inputEditCardNumber = CardNumberHelper.getCardNumberWithHyphens(
+      this.paymentDetailsToEdit.cardnumber.toString()
     );
   }
 
@@ -135,13 +124,13 @@ export class MponeaddpaymentDialogComponent
     });
   }
 
-  override onUpdateClick(): void {
+  override frmGetPaymentData(formValue: NgForm) {
     this.userService.updatePaymentDetails(
       this._position,
-      this._inputName,
-      this._inputPrice,
-      Number(
-        CardNumberHelper.removeCardNumberWithHyphens(this._inputCardNumber)
+      formValue.value.nameField,
+      formValue.value.priceField,
+      CardNumberHelper.removeCardNumberWithHyphens(
+        formValue.value.cardNumberField
       )
     );
     this.dialogRef.close();

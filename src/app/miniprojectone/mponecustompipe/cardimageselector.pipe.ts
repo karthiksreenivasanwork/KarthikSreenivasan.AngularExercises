@@ -9,10 +9,13 @@ const FA_MASTER_CARD_IMAGE_CLASS_NAME = 'fa-cc-mastercard';
 export class CardimageselectorPipe implements PipeTransform {
   transform(cardNumber: string): string {
     let faClassImage = '';
-    if (cardNumber.length > 1) {
-      let firstTwoNumbers = Number(cardNumber.substring(0, 2));
-      if (firstTwoNumbers >= 50) faClassImage = FA_VISA_CARD_IMAGE_CLASS_NAME;
-      else faClassImage = FA_MASTER_CARD_IMAGE_CLASS_NAME;
+    if (cardNumber != undefined && cardNumber.length > 1) {
+      let firstTwoNumbers: number = Number(cardNumber.substring(0, 2));
+      console.log(isNaN(firstTwoNumbers));
+      if (!isNaN(firstTwoNumbers)) {
+        if (firstTwoNumbers >= 50) faClassImage = FA_VISA_CARD_IMAGE_CLASS_NAME;
+        else faClassImage = FA_MASTER_CARD_IMAGE_CLASS_NAME;
+      }
     }
     return faClassImage;
   }

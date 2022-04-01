@@ -2,7 +2,11 @@ export interface IPaymentDetails {
   position: number;
   name: string;
   price: number;
-  cardnumber: number;
+  /**
+   * Changed from number datatype to string due to the following behavior during number conversion
+   * Number datatype changes card # - 9999-9999-9999-9999 to the next 1000-0000-0000-0000-0 
+   */
+  cardnumber: string;
 }
 
 /**

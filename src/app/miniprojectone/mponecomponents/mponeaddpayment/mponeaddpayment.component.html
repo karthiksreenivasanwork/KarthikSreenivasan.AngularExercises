@@ -1,64 +1,97 @@
 <div class="flex-container">
   <div class="flex-item-column">
-    <mat-form-field class="matInputField" appearance="fill">
-      <mat-label>Name</mat-label>
-      <!-- 
+    <form
+      (submit)="frmGetPaymentData(formElementReference)"
+      #formElementReference="ngForm"
+    >
+      <mat-form-field class="matInputField" appearance="fill">
+        <mat-label>Name</mat-label>
+        <!-- 
         Regex to only have characters.
         https://stackoverflow.com/questions/3617797/regex-to-match-only-letters 
       -->
-      <input
-        matInput
-        type="text"
-        pattern="[a-zA-Z]+"
-        placeholder="Payer's Name"
-        [(ngModel)]="_inputName"
-        autocomplete="off"
-      />
-    </mat-form-field>
-    <mat-form-field class="matInputField" appearance="fill">
-      <mat-label>Price</mat-label>
-      <input
-        matInput
-        type="text"
-        placeholder="Total cost"
-        [(ngModel)]="_inputPrice"
-        autocomplete="off"
-        pattern="\d*"
-        maxlength="8"
-      />
-    </mat-form-field>
-    <div class="flex-item-row">
-      <mat-form-field class="matInputTextField" appearance="fill">
-        <mat-label>Card Number</mat-label>
+        <input
+          name="nameField"
+          ngModel
+          matInput
+          type="text"
+          pattern="[a-zA-Z]+"
+          placeholder="Payer's Name"
+          autocomplete="off"
+          required
+          [ngModel]="inputEditName"
+        />
+        <mat-hint>Name field can have alphabets only</mat-hint>
+        <!--
+          mat-error gets triggered after we create map the element reference of the form as detailed below
+          <form #formElementReference="ngForm">
+        -->
+        <mat-error> Please enter a valid name </mat-error>
+      </mat-form-field>
+      <mat-form-field class="matInputField" appearance="fill">
+        <mat-label>Price</mat-label>
+        <!--Note: Regex pattern does trigger mat-error by default-->
         <input
           matInput
-          appCardnumberhyphenator
+          name="priceField"
+          ngModel
           type="text"
-          placeholder="XXXX-XXXX-XXXX-XXXX"
-          [(ngModel)]="_inputCardNumber"
+          placeholder="Total cost"
           autocomplete="off"
-          maxlength="19"
+          pattern="\d*"
+          maxlength="8"
+          required
+          [ngModel]="inputEditPrice" 
         />
+        <mat-hint>Price field can have numbers only</mat-hint>
+        <mat-error> Please enter a valid price </mat-error>
       </mat-form-field>
-      <i
-        class="fa fa-3x fa-brands {{
-          _inputCardNumber.toString() | cardimageselector
-        }} mponecardimage"
-      >
-      </i>
-    </div>
-  </div>
-  <div class="flex-item-row" *ngIf="!modelPopupStatus">
-    <button mat-raised-button color="primary" (click)="onAddPaymentClick()">
-      Add Payment
-    </button>
-    <button mat-raised-button (click)="onClearClick()">Clear</button>
-  </div>
-  <div class="flex-item-row" *ngIf="modelPopupStatus">
-    <button mat-raised-button color="accent" (click)="onUpdateClick()">
-      Update Payment
-    </button>
-    <button mat-raised-button mat-dialog-close>Cancel</button>
+      <div class="flex-item-row">
+        <mat-form-field class="matInputTextField" appearance="fill">
+          <mat-label>Card Number</mat-label>
+          <input
+            matInput
+            name="cardNumberField"
+            ngModel
+            appCardnumberhyphenator
+            type="text"
+            placeholder="XXXX-XXXX-XXXX-XXXX"
+            autocomplete="off"
+            pattern="^[0-9]{4}(-[0-9]{4})(-[0-9]{4})(-[0-9]{4})$"
+            maxlength="19"
+            required
+            [ngModel]="inputEditCardNumber"
+          />
+          <mat-hint>Card number field can have numbers only</mat-hint>
+          <mat-error> Please enter a valid card number </mat-error>
+        </mat-form-field>
+        <i
+          class="fa fa-3x fa-brands {{
+            formElementReference.value.cardNumberField
+              | cardimageselector
+          }} mponecardimage"
+        >
+        </i>
+      </div>
+      <div class="flex-item-row" *ngIf="!modelPopupStatus">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="formElementReference.invalid"
+        >
+          Add Payment
+        </button>
+        <button mat-raised-button (click)="onClearClick(formElementReference)">
+          Clear
+        </button>
+      </div>
+      <div class="flex-item-row" *ngIf="modelPopupStatus">
+        <button mat-raised-button color="accent" [disabled]="formElementReference.invalid">
+          Update Payment
+        </button>
+        <button mat-raised-button mat-dialog-close>Cancel</button>
+      </div>
+    </form>
   </div>
   <div class="flex-item-row">
     <div class="errormessage">{{ errorMessage }}</div>

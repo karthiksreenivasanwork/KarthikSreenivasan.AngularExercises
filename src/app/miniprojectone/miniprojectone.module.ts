@@ -46,7 +46,7 @@ import { CardnumberhyphenatorPipe } from './mponecustompipe/cardnumberhyphenator
   ],
   imports: [
     CommonModule,
-    FormsModule, //Required for ngModel 2 way data binding.
+    FormsModule, //Required for ngModel 2 way data binding. Also supports template driven forms.
 
     MiniprojectoneroutingModule,
 

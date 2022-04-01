@@ -1,7 +1,7 @@
 import {
   IPaymentDetails,
   PaymentDetailsKeyValueMapper,
-} from '../models/paymentdetails';
+} from '../models/ipaymentdetails';
 
 /**
  * Instead of using static classes similar to C#, we need to use Abstract classes
