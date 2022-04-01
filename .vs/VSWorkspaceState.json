@@ -4,15 +4,13 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\codingexercises",
-    "\\src\\app\\codingexercises\\texttransform",
-    "\\src\\app\\codingexercises\\texttransform\\texttransformpipes",
+    "\\src\\app\\codingexercises\\componentinteractions",
+    "\\src\\app\\codingexercises\\componentinteractions\\ciactivecproducts",
     "\\src\\app\\miniprojectone",
-    "\\src\\app\\miniprojectone\\mponecomponents",
-    "\\src\\app\\miniprojectone\\mponecomponents\\mponelistpayments",
     "\\src\\app\\miniprojectone\\mponeservice",
     "\\src\\app\\miniprojectone\\mponeutils",
     "\\src\\app\\miniprojectone\\validation"
   ],
-  "SelectedNode": "\\src\\app\\app.module.ts",
+  "SelectedNode": "\\src\\app\\app.component.html",
   "PreviewInSolutionExplorer": false
 }

@@ -71,9 +71,11 @@ export class CiactivecproductsComponent implements OnInit {
        * CiinactivecproductsComponent DOES NOT FIRE PROPERTY LEADING TO PRODUCTS
        * GETTING REMOVED FROM ACTIVE PRODUCTS AND NOT GETTING ADDED TO INACTIVE PRODUCTS
        * AS THE CHANGE DETECTION DID NOT FIRE.
+       * 
+       * The above is also applicable to set method.
        */
 
-      //this.productToDeactivate = productToDeactivateParam; CODE WITH ISSUE FOR LEARNING PURPOSES AND TRIAL
+      //this.productToDeactivate = productToDeactivateParam; //CODE WITH ISSUE FOR LEARNING PURPOSES AND TRIAL
       this.productToDeactivate = Object.assign({}, productToDeactivateParam); //CODE ISSUE FIXED HERE.
     }
   }

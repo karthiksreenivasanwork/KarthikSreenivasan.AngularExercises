@@ -23,8 +23,12 @@ const ICON_SWITCHER: string[] = [
   templateUrl: './ciinactivecproducts.component.html',
   styleUrls: ['./ciinactivecproducts.component.scss'],
 })
-export class CiinactivecproductsComponent implements OnInit, OnChanges {
-  @Input() inputDeactivateProduct: IProductDetailsModel = { ProductName: '' };
+export class CiinactivecproductsComponent implements OnInit {
+  @Input() set inputDeactivateProduct(value: IProductDetailsModel) {
+    if (value.ProductName.trim() != '') {
+      this.inactiveProductCollection.push(value);
+    }
+  }
   @Output() productActivatedEvent = new EventEmitter();
 
   inactiveProductCollection: IProductDetailsModel[] = [
@@ -48,17 +52,6 @@ export class CiinactivecproductsComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {}
-
-  /**
-   * Called whenever @Input value changes.
-   * @param changes
-   */
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('OnChangesEvent : Fired');
-    if (this.inputDeactivateProduct.ProductName.trim() != '') {
-      this.inactiveProductCollection.push(this.inputDeactivateProduct);
-    }
-  }
 
   OnActivateClick(productToActivateParam: IProductDetailsModel) {
     //console.log(`Product Activated : ${productToActivateParam}`);
