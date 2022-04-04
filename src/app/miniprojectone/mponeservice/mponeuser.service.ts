@@ -142,6 +142,12 @@ export class MponeuserService {
     return this._paymentCollection.length;
   }
 
+  clearPaymentData() {
+    if (this._paymentCollection.length > 0) {
+      this._paymentCollection = [];
+    }
+  }
+
   /**
    * Helps change detection with relevant data between listpayment and add payment component when the edit buton is clicked
    * @param paymentDetailsToUpdate Payment details to update

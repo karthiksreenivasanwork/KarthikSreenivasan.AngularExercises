@@ -2,3 +2,75 @@
 a:focus {
   color: red;
 }
+
+.flex-head-container {
+  width: 100%;
+  min-height: 90px;
+  min-width: 300px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /*Horizontal alignment*/
+  align-items: center; /*Vertical alignment*/
+  background-color: rgba(0, 140, 255, 0.679);
+  flex-wrap: wrap;
+  border-bottom: 3px solid rgb(1, 76, 138);
+}
+
+.flex-head-border {
+  border-radius: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: rgba($color: #ffffff, $alpha: 0.4);
+  border: 3px solid rgb(1, 76, 138);
+}
+
+.flex-head-item {
+  line-height: 1;
+  padding: 2px;
+  color: brown;
+}
+
+.flex-body-container {
+  display: flex;
+  height: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.flex-nav-container {
+  min-width: 290px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: left; /*Vertical alignment*/
+  background-image: linear-gradient(
+    to right bottom,
+    rgb(0, 140, 255),
+    rgb(170, 225, 241)
+  );
+  border-right: 3px solid rgb(1, 76, 138);
+}
+
+.flex-content-container {
+  justify-content: center;
+  margin: 10px 0 0 50px;
+}
+
+.flex-nav-item {
+  border-radius: 20px;
+  background-color: #ffffff;
+  margin: 20px;
+  padding: 4px;
+  font-weight: bold;
+  color: blue;
+  border: 3px solid rgb(1, 76, 138);
+}
+
+.nav-anchor {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+}

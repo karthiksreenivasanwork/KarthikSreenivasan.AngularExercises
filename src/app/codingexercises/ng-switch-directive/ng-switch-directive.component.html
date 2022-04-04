@@ -1,102 +1,104 @@
-<div class="flex-body-container">
-    <div class="flex-body-container-border">
-        <div class="flex-body-item-row">
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Ex# 3: ngSwitch Directive
-                    </mat-panel-title>
-                    <mat-panel-description>
-                        Requirements
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                <ul>
-                    <li class="formatListTag">
-                        <b>March 17, 2022</b>
-                    </li>
-                    <ul>
-                        <span class="subHeading">Original Requirement</span>
-                        <li class="formatListTag">
-                            Create a dropdown control which has 4 elements and a corresponding
-                            content to display respectively.
-                        </li>
-                        <li class="formatListTag">
-                            For each selection of the elements in the dropdown, load the corresponding
-                            content using ngSwitch directive.
-                        </li>
-                    </ul>
-                </ul>
-            </mat-expansion-panel>
-        </div>
-
-        <div class="flex-body-item-row">
-            <mat-form-field appearance="fill">
-                <mat-label>Contact me</mat-label>
-                <mat-select [(ngModel)]="dropDownData">
-                    <mat-option value="{{contactType.key}}" *ngFor="let contactType of contactCollection | keyvalue">
-                        {{contactType.value}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div class="flex-body-item-row" [ngSwitch]="dropDownData">
-            <div *ngSwitchCase="'youtube'">
-                <div class="flex-body-item-column">
-                    <div class="flex-body-item-row">
-                        <div class="celldata">
-                            <i class="fa fa-brands fa-youtube"></i>
-                        </div>
-                        <div class="celldata">
-                            <a href="https://www.youtube.com/channel/UC8aBbJJei_E7N7RJC2bYQDg">
-                                <h3>Unconventional Creator</h3>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div *ngSwitchCase="'twitter'">
-                <div class="flex-body-item-column">
-                    <div class="flex-body-item-row">
-                        <div class="celldata">
-                            <i class="fa fa-brands fa-twitter"></i>
-                        </div>
-                        <div class="celldata">
-                            <a href="https://twitter.com/youceeyoutube">
-                                <h3>@youceeyoutube</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div *ngSwitchCase="'facebook'">
-                <div class="flex-body-item-column">
-                    <div class="flex-body-item-row">
-                        <div class="celldata">
-                            <i class="fa fa-brands fa-facebook"></i>
-                        </div>
-                        <div class="celldata">
-                            <a href="https://www.facebook.com/unconventionalcreator">
-                                <h3>Unconventional Creator</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div *ngSwitchCase="'instagram'">
-                <div class="flex-body-item-column">
-                    <div class="flex-body-item-row">
-                        <div class="celldata">
-                            <i class="fa fa-brands fa-instagram"></i>
-                        </div>
-                        <div class="celldata">
-                            <a href="https://www.instagram.com/unconventionalcreator/">
-                                <h3>Unconventional Creator</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="flex-global-container">
+  <div class="flex-global-container-border">
+    <div class="flex-global-header-item">
+        <span>Social Media Channels</span>
+      </div>
+    <div class="flex-global-item-row">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Ex# 3: ngSwitch Directive </mat-panel-title>
+          <mat-panel-description> Requirements </mat-panel-description>
+        </mat-expansion-panel-header>
+        <ul>
+          <li class="formatListTag">
+            <b>March 17, 2022</b>
+          </li>
+          <ul>
+            <span class="subHeading">Original Requirement</span>
+            <li class="formatListTag">
+              Create a dropdown control which has 4 elements and a corresponding
+              content to display respectively.
+            </li>
+            <li class="formatListTag">
+              For each selection of the elements in the dropdown, load the
+              corresponding content using ngSwitch directive.
+            </li>
+          </ul>
+        </ul>
+      </mat-expansion-panel>
     </div>
+    <div class="flex-global-item-row">
+      <mat-form-field appearance="fill" class="matformfield">
+        <mat-label>Contact me</mat-label>
+        <mat-select [(ngModel)]="dropDownData">
+          <mat-option
+            value="{{ contactType.key }}"
+            *ngFor="let contactType of contactCollection | keyvalue"
+          >
+            {{ contactType.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="flex-global-item-row" [ngSwitch]="dropDownData">
+      <div *ngSwitchCase="'youtube'">
+        <div class="flex-global-item-column">
+          <div class="flex-global-item-row">
+            <div class="celldata">
+              <i class="fa fa-brands fa-youtube"></i>
+            </div>
+            <div class="celldata">
+              <a
+                href="https://www.youtube.com/channel/UC8aBbJJei_E7N7RJC2bYQDg"
+              >
+                <h3>Unconventional Creator</h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngSwitchCase="'twitter'">
+        <div class="flex-global-item-column">
+          <div class="flex-global-item-row">
+            <div class="celldata">
+              <i class="fa fa-brands fa-twitter"></i>
+            </div>
+            <div class="celldata">
+              <a href="https://twitter.com/youceeyoutube">
+                <h3>@youceeyoutube</h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngSwitchCase="'facebook'">
+        <div class="flex-global-item-column">
+          <div class="flex-global-item-row">
+            <div class="celldata">
+              <i class="fa fa-brands fa-facebook"></i>
+            </div>
+            <div class="celldata">
+              <a href="https://www.facebook.com/unconventionalcreator">
+                <h3>Unconventional Creator</h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngSwitchCase="'instagram'">
+        <div class="flex-global-item-column">
+          <div class="flex-global-item-row">
+            <div class="celldata">
+              <i class="fa fa-brands fa-instagram"></i>
+            </div>
+            <div class="celldata">
+              <a href="https://www.instagram.com/unconventionalcreator/">
+                <h3>Unconventional Creator</h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -5,6 +5,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TtreversestringPipe implements PipeTransform {
   transform(inputValue: string): string {
+
+    /**
+     * Todo - Gopi Sir - 
+     * Step 1: Split the string split('')
+     * Step 2: split('').reverse
+     * Step 3: Join
+     */
     let reversedString: string = '';
     let words: string[] = inputValue.split(' ');
 

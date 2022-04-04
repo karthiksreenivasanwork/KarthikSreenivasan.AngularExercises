@@ -5,9 +5,9 @@ import {
 
 /**
  * Instead of using static classes similar to C#, we need to use Abstract classes
- * which perform simimar role in Typescript.
+ * which perform similar role in Typescript.
  *
- * For more detials, please refere to the below link:
+ * For more details, please refer to the below link:
  * https://stackoverflow.com/questions/13212521/typescript-static-classes
  *
  * Solution: Abstract classes have been a first-class citizen of TypeScript since TypeScript 1.6.
@@ -41,6 +41,7 @@ export abstract class FilterListPayments {
             );
           }
           break;
+          //Todo - Gopi Sir: Add separate cases.
         default: //Other columns will can match any data that matches the search text.
           if (
             paymentDetailvalue
@@ -53,7 +54,6 @@ export abstract class FilterListPayments {
           }
       }
     }
-    //console.log(JSON.stringify(filteredPaymentDetailCollection));
     return filteredPaymentDetailCollection;
   }
 }

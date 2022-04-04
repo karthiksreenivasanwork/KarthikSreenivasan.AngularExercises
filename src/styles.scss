@@ -1,118 +1,143 @@
 /* You can add global styles to this file, and also import other style files */
 html,
 body {
-    height: 100%;
+  height: 100%;
+  overflow: visible;
 }
 
 body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-.flex-head-container {
-    height: 7%; //If - flex-head-container's height is 10% percent, then flex-body-container will be it's remaining which is 90%
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center; /*Horizontal alignment*/
-    align-items: center; /*Vertical alignment*/
-    background-image: linear-gradient(to right bottom, rgb(0, 140, 255), green);
-    flex-wrap: wrap;
-    border-bottom: 2px solid rgb(1, 76, 138);
-}
-
-.flex-head-border {
-    border-radius: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-    background-color: rgba($color: #4cadda, $alpha: 0.4);
-}
-
-.flex-head-item {
-    line-height: 1;
-    padding: 2px;
-    text-shadow: 2px 2px #947ce4;
-}
-
-.flex-nav-container {
-    height: 4%; //If - flex-head-container's height is 10% percent, then flex-body-container will be it's remaining which is 90%
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center; /*Vertical alignment*/
-    background-image: linear-gradient(to right bottom, rgb(0, 140, 255), rgb(0, 49, 128));
-    flex-wrap: wrap; /*Position the text exactly in the middle of the container.*/
-    border-bottom: 2px solid rgb(1, 76, 138);
-}
-
-.flex-nav-item {
-    border-radius: 20px;
-    padding: 10px;
-    background-color: #ffffff;
-    margin-left: 20px;
-
-    line-height: 1;
-    padding: 2px;
-    font-weight: bold;
-    color: blue;
-}
-
-.nav-anchor {
-    padding-left: 10px;
-    padding-right: 10px;
-    text-decoration: none;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(230, 228, 228),
+    rgb(255, 255, 255)
+  );
 }
 
 .button {
-    width: fit-content;
-    border: 0;
-    font-size: 18px;
-    padding: 0 10px;
-    text-shadow: 1px 1px 1px #000;
-    background-color: rgb(4, 108, 192);
-    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-    line-height: 2.5;
-    color: rgb(255, 255, 255);
-    margin: 5px;
+  width: fit-content;
+  border: 0;
+  font-size: 18px;
+  padding: 0 10px;
+  text-shadow: 1px 1px 1px #000;
+  background-color: rgb(4, 108, 192);
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  line-height: 2.5;
+  color: rgb(255, 255, 255);
+  margin: 5px;
 
-    /*
+  /*
     * How to remove the text selection from the DIV button.
     * Answer - It is with the user select css key
     * https://stackoverflow.com/questions/3779534/how-do-i-disable-text-selection-with-css-or-javascript
     */
-    //
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently
+  //
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
 
 .button:hover {
-    background-color: rgba(0, 0, 255, 0.8);
+  background-color: rgba(0, 0, 255, 0.8);
 }
 
 .button:active {
-    box-shadow: inset -2px -2px 3px rgba($color: #82cdeb, $alpha: 1);
-}
-
-.disableButton {
-    /*
-    * Disable clicking of a tag.
-    * We use this since we are using div as a button
-    */
-    pointer-events: none;
-    background-color: grey;
+  box-shadow: inset -2px -2px 3px rgba($color: #82cdeb, $alpha: 1);
 }
 
 .errormessage {
-    color: red;
-    font-size: 18px;
+  color: red;
+  font-size: 18px;
 }
 
+.disableButton {
+  /*
+    * Disable clicking of a tag.
+    * We use this since we are using div as a button
+    */
+  pointer-events: none;
+  background-color: grey;
+}
+
+mat-expansion-panel {
+  margin: 5px;
+  border: 3px solid rgb(0, 165, 143);
+}
+
+h3,
+h4 {
+  line-height: 0px;
+}
+
+.flex-global-container {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+
+.flex-global-container-border {
+  width: 500px;
+  border: 3px solid rgb(0, 165, 143);
+}
+
+.flex-global-header-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  background-color: orange;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.flex-global-item-column {
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 5px;
+  margin: 10px;
+  padding: 2px 0px 2px 20px;
+}
+
+.flex-global-item-row {
+  display: flex;
+
+  border-radius: 5px;
+  margin: 10px;
+  padding: 2px 0px 2px 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.subHeading {
+  text-decoration: underline;
+  font-size: 18px;
+}
+
+.formatListTag {
+  line-height: 2;
+}
+
+.matInputField {
+  width: 100%;
+}
+
+.matformfield {
+  width: 100%;
+}
+.rowBackgroundColor {
+  background-color: aqua;
+}

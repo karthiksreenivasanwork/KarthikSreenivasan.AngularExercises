@@ -1,78 +1,84 @@
-<div class="flex-body-container">
-    <div class="flex-body-container-border">
-        <div class="flex-body-item">
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Ex# 1: Binding
-                    </mat-panel-title>
-                    <mat-panel-description>
-                        Requirements
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                <ul>
-                    <li>
-                        <b>March 14, 2022</b>
-                    </li>
-                    <ul>
-                        <li>
-                            <span class="subHeading">Original Requirement</span>
-                        </li>
-                        <li>
-                            In this component, please have two buttons to add or remove products.
-                            Adding or removing a product, must update the total product count in the shopping cart
-                            (depicted in blue).
-                        </li>
-                    </ul>
-                    <hr>
-                    <li>
-                        <b>March 16, 2022</b>
-                    </li>
-                    <ul>
-                        <li>
-                            <span class="subHeading">Updated requirements</span>
-                        </li>
-                        <li>
-                            Have a maximum cart limit of 5.
-                        </li>
-                        <li>
-                            When the maximum limit has been reached, disable - 'Add Item' button.
-                        </li>
-                        <li>
-                            When there are no items in the cart, disable - 'Remove Item' button.
-                        </li>
-                    </ul>
-                </ul>
-            </mat-expansion-panel>
-        </div>
-        <div class="flex-body-header-item">
-            <h2>Product Tracker</h2>
-        </div>
-
-        <div class="flex-body-item">
-            <div class="flex-item-container">
-                <h3>Total products in the cart : </h3>
-                <div class="displayCardCount">{{itemsInTheCart}}</div>
-            </div>
-        </div>
-
-        <div class="flex-body-item">
-            <h4 style="text-decoration: underline;">Add or remove products</h4>
-        </div>
-
-        <div class="flex-body-item">
-            <div class="flex-item-container">
-                <div class="button" (click)="onAddProductClick()" [ngClass]="{disableButton: itemsInTheCart == 5}">Add
-                    item</div>
-                <div class="button" (click)="onRemoveProductClick()" [ngClass]="{disableButton: itemsInTheCart == 0}">
-                    Remove item</div>
-            </div>
-        </div>
-
-        <div class="flex-body-item">
-            <div class="flex-item-container">
-                <div class="errormessage">{{errorMessage}}</div>
-            </div>
-        </div>
+<div class="flex-global-container">
+  <div class="flex-global-container-border">
+    <div class="flex-global-header-item">
+      <span>Product Tracker</span>
     </div>
+    <div class="flex-global-item-row">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Ex# 1: Binding </mat-panel-title>
+          <mat-panel-description> Requirements </mat-panel-description>
+        </mat-expansion-panel-header>
+        <ul>
+          <li class="formatListTag">
+            <b>March 14, 2022</b>
+          </li>
+          <ul>
+            <li>
+              <span class="subHeading">Original Requirement</span>
+            </li>
+            <li>
+              In this component, please have two buttons to add or remove
+              products. Adding or removing a product, must update the total
+              product count in the shopping cart (depicted in blue).
+            </li>
+          </ul>
+          <hr />
+          <li>
+            <b>March 16, 2022</b>
+          </li>
+          <ul>
+            <li>
+              <span class="subHeading">Updated requirements</span>
+            </li>
+            <li>Have a maximum cart limit of 5.</li>
+            <li>
+              When the maximum limit has been reached, disable - 'Add Item'
+              button.
+            </li>
+            <li>
+              When there are no items in the cart, disable - 'Remove Item'
+              button.
+            </li>
+          </ul>
+        </ul>
+      </mat-expansion-panel>
+    </div>
+
+    <div class="flex-item-container">
+      <div class="flex-item">
+        <h3>Total products in the cart :</h3>
+        <div class="displayCardCount">{{ itemsInTheCart }}</div>
+      </div>
+    </div>
+
+    <div class="flex-item-container">
+      <h4 style="text-decoration: underline">Add or remove products</h4>
+    </div>
+
+    <div class="flex-item-container">
+      <div class="flex-item">
+        <div
+          class="button"
+          (click)="onAddProductClick()"
+          [ngClass]="{ disableButton: itemsInTheCart == 5 }"
+        >
+          Add item
+        </div>
+        <div
+          class="button"
+          (click)="onRemoveProductClick()"
+          [ngClass]="{ disableButton: itemsInTheCart == 0 }"
+        >
+          Remove item
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-item-container">
+      <div class="flex-item">
+        <div class="errormessage">{{ errorMessage }}</div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,6 +1,9 @@
-<div class="flex-body-container">
-  <div class="flex-body-container-border">
-    <div class="flex-body-item-row">
+<div class="flex-global-container">
+  <div class="flex-global-container-border">
+    <div class="flex-global-header-item">
+      <span>Text Transformation Types</span>
+    </div>
+    <div class="flex-global-item-row">
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title> Ex# 5: Text Transformation </mat-panel-title>
@@ -35,7 +38,7 @@
       </mat-expansion-panel>
     </div>
 
-    <div class="flex-body-item-row">
+    <div class="flex-global-item-row">
       <mat-form-field appearance="fill" class="matformfield">
         <mat-label>Text Transformation Options</mat-label>
         <mat-select
@@ -51,9 +54,9 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div class="flex-body-item-row" [ngSwitch]="dropDownData">
+    <div class="flex-global-item-row" [ngSwitch]="dropDownData">
       <div *ngSwitchCase="'ordinal'" class="switchcasecontainer">
-        <div class="flex-body-item-row">
+        <div class="flex-global-item-row">
           <div class="celldata-left">
             <img
               src="../../../assets/Icons/cloud-bolt-solid.svg"
@@ -78,19 +81,19 @@
             </mat-form-field>
           </div>
         </div>
-        <div class="flex-body-item-row">
+        <div class="flex-global-item-row">
           <mat-label class="transformedoutput">
             Output: {{ outputValue | ttordinalpipe }}
           </mat-label>
         </div>
         <hr />
-        <div class="flex-body-item-column">
+        <div class="flex-global-item-column">
           <mat-label>Sample input: 1</mat-label>
           <mat-label>Sample output: 1st</mat-label>
         </div>
       </div>
       <div *ngSwitchCase="'titleonlycase'" class="switchcasecontainer">
-        <div class="flex-body-item-row">
+        <div class="flex-global-item-row">
           <div class="celldata-left">
             <img src="../../../assets/Icons/a-solid.svg" class="logo" />
           </div>
@@ -112,13 +115,13 @@
             </mat-form-field>
           </div>
         </div>
-        <div class="flex-body-item-row">
+        <div class="flex-global-item-row">
           <mat-label class="transformedoutput">
             Output: {{ outputValue | ttcasechanger: pipeCaseChangerTitleCase }}
           </mat-label>
         </div>
         <hr />
-        <div class="flex-body-item-column">
+        <div class="flex-global-item-column">
           <mat-label>Sample Input: we are all here</mat-label>
           <mat-label>
             Sample output: <b>W</b>e are <b>A</b>ll <b>H</b>ere
@@ -129,7 +132,7 @@
         </div>
       </div>
       <div *ngSwitchCase="'cleanword'" class="switchcasecontainer">
-        <div class="flex-body-item-row">
+        <div class="flex-global-item-row">
           <div class="celldata-left">
             <img src="../../../assets/Icons/ellipsis-solid.svg" class="logo" />
           </div>
@@ -151,13 +154,13 @@
             </mat-form-field>
           </div>
         </div>
-        <div class="flex-body-item-row">
+        <div class="flex-global-item-row">
           <mat-label class="transformedoutput">
             Output: {{ outputValue | ttcleanword }}
           </mat-label>
         </div>
         <hr />
-        <div class="flex-body-item-column">
+        <div class="flex-global-item-column">
           <mat-label>Sample Input: badword1</mat-label>
           <mat-label>Sample output: <b>b</b>******<b>1</b></mat-label>
           <mat-label class="label-danger">
@@ -166,7 +169,7 @@
         </div>
       </div>
       <div *ngSwitchCase="'camelcase'" class="switchcasecontainer">
-        <div class="flex-body-item-row">
+        <div class="flex-global-item-row">
           <div class="celldata-left">
             <img src="../../../assets/Icons/mountain-solid.svg" class="logo" />
           </div>
@@ -188,13 +191,13 @@
             </mat-form-field>
           </div>
         </div>
-        <div class="flex-body-item-row">
+        <div class="flex-global-item-row">
           <mat-label class="transformedoutput">
             Output: {{ outputValue | ttcasechanger: pipeCaseChangerCamelCase }}
           </mat-label>
         </div>
         <hr />
-        <div class="flex-body-item-column">
+        <div class="flex-global-item-column">
           <mat-label>Sample input: world is beautiful</mat-label>
           <mat-label>Sample output: world <b>I</b>s <b>B</b>eautiful</mat-label>
           <mat-label class="label-danger">
@@ -203,7 +206,7 @@
         </div>
       </div>
       <div *ngSwitchCase="'reverse'" class="switchcasecontainer">
-        <div class="flex-body-item-row">
+        <div class="flex-global-item-row">
           <div class="celldata-left">
             <img src="../../../assets/Icons/backward-solid.svg" class="logo" />
           </div>
@@ -225,13 +228,13 @@
             </mat-form-field>
           </div>
         </div>
-        <div class="flex-body-item-row">
+        <div class="flex-global-item-row">
           <mat-label class="transformedoutput">
             Output: {{ outputValue | ttreversestring }}
           </mat-label>
         </div>
         <hr />
-        <div class="flex-body-item-column">
+        <div class="flex-global-item-column">
           <mat-label>Sample input:Hello. How are you?</mat-label>
           <mat-label>Sample output:olleH woH era ?uoy</mat-label>
         </div>

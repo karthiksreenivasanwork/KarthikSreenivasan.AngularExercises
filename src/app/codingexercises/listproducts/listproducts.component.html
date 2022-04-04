@@ -1,64 +1,84 @@
-<div class="flex-body-container">
-    <div class="flex-body-container-border">
-        <div class="flex-body-item-row">
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Ex# 2: Directives
-                    </mat-panel-title>
-                    <mat-panel-description>
-                        Requirements
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                <ul>
-                    <li class="formatListTag">
-                        <b>March 16, 2022</b>
-                    </li>
-                    <ul>
-                        <span class="subHeading">Original Requirement</span>
-                        <li class="formatListTag">
-                            Display a catalog of products available.
-                        </li>
-                        <li class="formatListTag">
-                            Have a provision to add new products to the existing catalog.
-                        </li>
-                        <li class="formatListTag">
-                            Implement a toggle indicator control. This indicator's behaviour would be to
-                            hide or reveal itself. Every alternate item will hide the toggle
-                            or reveal itself otherwise.
-                        </li>
-                        <li class="formatListTag">
-                            When the product count reaches 10 items and beyond, add a new style to the row
-                            using the - Angular's 'ngClass' attribute directive.
-                        </li>
-                        <li class="formatListTag">
-                            When the product reaches 13 items and beyond, add a new style to the row
-                            using the - Angular's 'ngStyle' attribute directive as well.
-                        </li>
-                    </ul>
-                </ul>
-            </mat-expansion-panel>
-        </div>
-
-        <div class="flex-body-item-row">
-            <mat-form-field class="matInputField" appearance="fill">
-                <mat-label>Add a Product</mat-label>
-                <input matInput placeholder="Add a new product" [(ngModel)]="productName" />
-            </mat-form-field>
-            <div class="button" (click)="onAddProductClick()">Add</div>
-        </div>
-        <div class="toggleContainer" [hidden]="isToggleVisible">Toggle Control</div>
-        <div class="flex-body-item-row">
-            <div class="errormessage">{{errorMessage}}</div>
-        </div>
-
-        <div class="flex-body-header-item">
-            <h3>Product Catalog</h3>
-        </div>
-
-        <div class="flex-body-item-column" *ngFor="let product of productCollection;index as i;"
-            [ngClass]="{rowBackgroundColor: i >=  9}" [ngStyle]="{'font-weight': i >=  12 ? 'bold': 'normal'}">
-            {{i+1}}.{{product}}
-        </div>
+<div class="flex-global-container">
+  <div class="flex-global-container-border">
+    <div class="flex-global-header-item">
+      <span>List Products</span>
     </div>
+    <div class="flex-global-item-row">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Ex# 2: Directives </mat-panel-title>
+          <mat-panel-description> Requirements </mat-panel-description>
+        </mat-expansion-panel-header>
+        <ul>
+          <li class="formatListTag">
+            <b>March 16, 2022</b>
+          </li>
+          <ul>
+            <span class="subHeading">Original Requirement</span>
+            <li class="formatListTag">
+              Display a catalog of products available.
+            </li>
+            <li class="formatListTag">
+              Have a provision to add new products to the existing catalog.
+            </li>
+            <li class="formatListTag">
+              Implement a toggle indicator control. This indicator's behaviour
+              would be to hide or reveal itself. Every alternate item will hide
+              the toggle or reveal itself otherwise.
+            </li>
+            <li class="formatListTag">
+              When the product count reaches 10 items and beyond, add a new
+              style to the row using the - Angular's 'ngClass' attribute
+              directive.
+            </li>
+            <li class="formatListTag">
+              When the product reaches 13 items and beyond, add a new style to
+              the row using the - Angular's 'ngStyle' attribute directive as
+              well.
+            </li>
+          </ul>
+        </ul>
+      </mat-expansion-panel>
+    </div>
+
+    <div class="flex-global-item-row">
+      <mat-form-field class="matInputField" appearance="fill">
+        <mat-label>Add a Product</mat-label>
+        <input
+          matInput
+          placeholder="Add a new product"
+          [(ngModel)]="productName"
+        />
+      </mat-form-field>
+      <div
+        class="button"
+        (click)="onAddProductClick()"
+        [ngClass]="{ disableButton: productName.length == 0 }"
+      >
+        Add
+      </div>
+      <!--[ngClass]="{disableButton: itemsInTheCart == 5}"-->
+    </div>
+    <div class="flex-global-item-row">
+      <div class="toggleContainer" [hidden]="isToggleVisible">
+        Toggle Control
+      </div>
+    </div>
+    <div class="flex-global-item-row">
+      <div class="errormessage">{{ errorMessage }}</div>
+    </div>
+
+    <div class="flex-global-header-item">
+      <h3>Product Catalog</h3>
+    </div>
+
+    <div
+      class="flex-global-item-column"
+      *ngFor="let product of productCollection; index as i"
+      [ngClass]="{ rowBackgroundColor: i >= 9 }"
+      [ngStyle]="{ 'font-weight': i >= 12 ? 'bold' : 'normal' }"
+    >
+      {{ i + 1 }}.{{ product }}
+    </div>
+  </div>
 </div>

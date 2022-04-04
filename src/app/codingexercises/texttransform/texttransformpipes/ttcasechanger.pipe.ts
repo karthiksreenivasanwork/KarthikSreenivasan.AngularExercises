@@ -22,7 +22,7 @@ export class TtCaseChangerPipe implements PipeTransform {
 
     for (let i = 0; i < words.length; i++) {
       if (!this.isWordExcempted(words[i])) {
-        if (transformationType == TTUtuls.CAMEL_CASE_PARAM && i == 0) {
+        if (transformationType == TTUtuls.CAMEL_CASE_PARAM && i == 0) { //Todo Gopi Sir - No space during camel case.
           transformedSentence += `${words[i]} `;
           continue;
         }

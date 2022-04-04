@@ -55,6 +55,11 @@ export class CiactivecproductsComponent implements OnInit {
        * In the case of an object, that value is the object reference. If the object reference does not change, OnChanges is not triggered.
        * A possible technique to force change detection is to set a new object reference after modifying the property values:
        */
+      /**
+       * Gopi Sir's comments:
+       * JSON string conversion as well Object.assign come under deep copy concepts
+       */
+      //this.productToDeactivate = productToDeactivateParam; //Issue with the code.
       this.productToDeactivate = Object.assign({}, productToDeactivateParam); //CODE ISSUE FIXED HERE.
     }
   }

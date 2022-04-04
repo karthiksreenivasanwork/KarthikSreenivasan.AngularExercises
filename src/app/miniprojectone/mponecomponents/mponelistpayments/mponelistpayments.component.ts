@@ -71,6 +71,9 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
         }
       )
     );
+    //Clear existing payment data before loading the default data.
+    this.mponeuserService.clearPaymentData();
+    
     //Add default payment data.
     this.mponeuserService.addPaymentDetails('Karthik', 2000, "4558758965115248");
     this.mponeuserService.addPaymentDetails('Krishna', 3000, "4668758965115675");
