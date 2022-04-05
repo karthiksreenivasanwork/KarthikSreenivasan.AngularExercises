@@ -1,7 +1,13 @@
 <div class="flex-container">
   <div class="flex-container-border">
-    <div class="flex-proj-header-item">
-      <span>Mini Project - Payment Manager Tool</span>
+    <div class="flex-global-header-item">
+      <mat-label>Mini Project - Payment Manager Tool</mat-label>
+      <img
+        matTooltip="Price column is an exact match"
+        matTooltipClass="mat-tooltip-header"
+        class="logo-info"
+        src="../../../assets/Icons/circle-info-solid.svg"
+      />
     </div>
     <div class="scrollable-container">
       <mat-expansion-panel>
@@ -120,7 +126,7 @@
           [(ngModel)]="dropdownDataFilterCriteria"
           (selectionChange)="onSelectionValueChanged()"
           matTooltip="Price column is an exact match"
-          matTooltipClass="select-tooltip-red"
+          matTooltipClass="mat-tooltip-select"
         >
           <mat-option
             value="{{ searchColumn.key }}"

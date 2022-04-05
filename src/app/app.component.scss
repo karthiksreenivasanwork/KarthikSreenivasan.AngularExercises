@@ -74,3 +74,8 @@ a:focus {
   padding-right: 10px;
   text-decoration: none;
 }
+
+::ng-deep .mat-tooltip-header {
+  font-size: 15px;
+  background-color: #0e9250;
+}

@@ -3,14 +3,7 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\codingexercises",
-    "\\src\\app\\codingexercises\\texttransform",
-    "\\src\\app\\codingexercises\\texttransform\\texttransformpipes",
-    "\\src\\app\\miniprojectone",
-    "\\src\\app\\miniprojectone\\models",
-    "\\src\\app\\miniprojectone\\mponeservice",
-    "\\src\\app\\miniprojectone\\mponeutils"
+    "\\src\\app\\codingexercises"
   ],
-  "SelectedNode": "\\src\\app\\miniprojectone\\models\\ipaymentdetails.ts",
   "PreviewInSolutionExplorer": false
 }

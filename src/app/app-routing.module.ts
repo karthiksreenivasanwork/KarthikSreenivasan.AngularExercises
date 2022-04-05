@@ -10,16 +10,16 @@ import { ComponentinteractionsComponent } from './codingexercises/ex6_componenti
 
 // sets up routes constant where you define your routes
 const routes: Routes = [
-  { path: 'exonebinding', component: ProducttrackingComponent },
-  { path: 'extwodirective', component: ListproductsComponent },
-  { path: 'exthreengswitch', component: NgSwitchDirectiveComponent },
-  { path: 'miniprojectone', loadChildren: () => MiniprojectoneModule }, //Ex# 4
-  { path: 'exfivetexttransformer', component: TexttransformComponent },
+  { path: 'ex1binding', component: ProducttrackingComponent },
+  { path: 'ex2directive', component: ListproductsComponent },
+  { path: 'ex3ngswitch', component: NgSwitchDirectiveComponent },
+  { path: 'ex4miniprojectone', loadChildren: () => MiniprojectoneModule },
+  { path: 'ex5texttransformer', component: TexttransformComponent },
   {
-    path: 'exsixcomponentinterations',
+    path: 'ex6componentinterations',
     component: ComponentinteractionsComponent,
   },
-  { path: '**', redirectTo: 'exsixcomponentinterations' },
+  { path: '**', redirectTo: 'ex4miniprojectone' }, //Load the mini project by default.
 ];
 
 @NgModule({

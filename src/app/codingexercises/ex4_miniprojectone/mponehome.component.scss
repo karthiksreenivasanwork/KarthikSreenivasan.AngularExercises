@@ -60,3 +60,14 @@ h4 {
 .matInputField {
   width: 50%;
 }
+
+::ng-deep .mat-tooltip-select {
+  font-size: 15px;
+  background-color: #b71c1c;
+}
+
+.logo-info {
+  width: 18px;
+  height: 18px;
+  padding-left: 10px;
+}
