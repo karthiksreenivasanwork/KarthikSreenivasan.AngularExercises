@@ -1,0 +1,164 @@
+<div class="flex-container">
+  <div class="flex-item-column">
+    <form
+      (submit)="frmGetPaymentData(formElementReference)"
+      #formElementReference="ngForm"
+    >
+      <mat-form-field class="matInputField" appearance="fill">
+        <mat-label>Name</mat-label>
+        <!-- 
+        Regex to only have characters.
+        https://stackoverflow.com/questions/3617797/regex-to-match-only-letters 
+      -->
+        <input
+          name="nameField"
+          ngModel
+          matInput
+          type="text"
+          placeholder="Payer Name"
+          autocomplete="off"
+          [ngModel]="inputEditName"
+          #inputNameElementReference="ngModel"
+          required
+          pattern="[a-zA-Z]+"
+          minlength="2"
+        />
+        <mat-hint>Name field can have alphabets only</mat-hint>
+        <div
+          class="errorInputDisplay"
+          *ngIf="
+            inputNameElementReference.errors?.['required'] &&
+            (inputNameElementReference.touched ||
+            inputNameElementReference.dirty); else inputErrorMinLength;"
+        >
+          Name cannot be empty
+        </div>
+        <ng-template #inputErrorMinLength>
+          <div
+            class="errorInputDisplay"
+            *ngIf="inputNameElementReference.errors?.['minlength'] &&
+          inputNameElementReference.dirty; else inputErrorNamePattern;"
+          >
+            <!--Show error while typing itself-->
+            Name must be a minimum of 2 letters
+          </div>
+        </ng-template>
+        <ng-template #inputErrorNamePattern>
+          <div
+            class="errorInputDisplay"
+            *ngIf="inputNameElementReference.errors?.['pattern'] &&
+                 inputNameElementReference.dirty"
+          >
+            Please enter letters only
+          </div>
+        </ng-template>
+      </mat-form-field>
+      <!--
+          ng-template is used to display one error at a time using if else condition
+        -->
+      <mat-form-field class="matInputField" appearance="fill">
+        <mat-label>Price</mat-label>
+        <!--Note: Regex pattern does trigger mat-error by default-->
+        <input
+          matInput
+          name="priceField"
+          ngModel
+          type="text"
+          placeholder="Total cost"
+          autocomplete="off"
+          maxlength="8"
+          [ngModel]="inputEditPrice"
+          #inputPriceElementReference="ngModel"
+          required
+          pattern="\d*"
+        />
+        <mat-hint>Price field can have numbers only</mat-hint>
+        <div
+          class="errorInputDisplay"
+          *ngIf="inputPriceElementReference.errors?.['required'] &&
+        (inputPriceElementReference.touched ||
+        inputPriceElementReference.dirty); else inputErrorPricePattern;"
+        >
+          Price cannot be empty
+        </div>
+        <ng-template #inputErrorPricePattern>
+          <div
+            class="errorInputDisplay"
+            *ngIf="inputPriceElementReference.errors?.['pattern'] &&
+            inputPriceElementReference.dirty"
+          >
+            Please enter numbers only
+          </div>
+        </ng-template>
+      </mat-form-field>
+      <div class="flex-item-row">
+        <mat-form-field class="matCardNumberField" appearance="fill">
+          <mat-label>Card Number</mat-label>
+          <input
+            matInput
+            name="cardNumberField"
+            ngModel
+            appCardnumberhyphenator
+            type="text"
+            placeholder="XXXX-XXXX-XXXX-XXXX"
+            autocomplete="off"
+            maxlength="19"
+            [ngModel]="inputEditCardNumber"
+            required
+            pattern="^[0-9]{4}(-[0-9]{4})(-[0-9]{4})(-[0-9]{4})$"
+            #inputCardNumberElementReference="ngModel"
+          />
+          <mat-hint>Card number field can have numbers only</mat-hint>
+          <div
+            class="errorInputDisplay"
+            *ngIf="inputCardNumberElementReference.errors?.['required'] &&
+            (inputCardNumberElementReference.touched ||
+            inputCardNumberElementReference.dirty); else inputErrorCardPattern"
+          >
+            Card number cannot be empty
+          </div>
+          <ng-template #inputErrorCardPattern>
+            <div
+              class="errorInputDisplay"
+              *ngIf="inputCardNumberElementReference.errors?.['pattern'] &&
+              inputCardNumberElementReference.touched"
+            >
+              Accepted format - xxxx-xxxx-xxxx-xxxx
+            </div>
+          </ng-template>
+        </mat-form-field>
+        <i
+          class="fa fa-3x fa-brands {{
+            formElementReference.value.cardNumberField | cardimageselector
+          }} mponecardimage"
+        >
+        </i>
+      </div>
+      <div class="flex-item-row" *ngIf="!modelPopupStatus">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="formElementReference.invalid"
+        >
+          Add Payment
+        </button>
+        <button mat-raised-button (click)="onClearClick(formElementReference)">
+          Clear
+        </button>
+      </div>
+      <div class="flex-item-row" *ngIf="modelPopupStatus">
+        <button
+          mat-raised-button
+          color="accent"
+          [disabled]="formElementReference.invalid"
+        >
+          Update Payment
+        </button>
+        <button mat-raised-button mat-dialog-close>Cancel</button>
+      </div>
+    </form>
+  </div>
+  <div class="flex-item-row">
+    <div class="errormessage">{{ errorMessage }}</div>
+  </div>
+</div>

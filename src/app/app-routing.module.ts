@@ -1,26 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ListproductsComponent } from './codingexercises/listproducts/listproducts.component';
-import { NgSwitchDirectiveComponent } from './codingexercises/ng-switch-directive/ng-switch-directive.component';
-import { ProducttrackingComponent } from './codingexercises/producttracking/producttracking.component';
-
-import { MiniprojectoneModule } from './/miniprojectone/miniprojectone.module';
-import { TexttransformComponent } from './codingexercises/texttransform/texttransform.component';
-import { ComponentinteractionsComponent } from './codingexercises/componentinteractions/componentinteractions.component';
+import { ProducttrackingComponent } from './codingexercises/ex1_producttracking/producttracking.component';
+import { ListproductsComponent } from './codingexercises/ex2_listproducts/listproducts.component';
+import { NgSwitchDirectiveComponent } from './codingexercises/ex3_ng-switch-directive/ng-switch-directive.component';
+import { MiniprojectoneModule } from './/./codingexercises/ex4_miniprojectone/miniprojectone.module';
+import { TexttransformComponent } from './codingexercises/ex5_texttransform/texttransform.component';
+import { ComponentinteractionsComponent } from './codingexercises/ex6_componentinteractions/componentinteractions.component';
 
 // sets up routes constant where you define your routes
 const routes: Routes = [
   { path: 'exonebinding', component: ProducttrackingComponent },
   { path: 'extwodirective', component: ListproductsComponent },
   { path: 'exthreengswitch', component: NgSwitchDirectiveComponent },
+  { path: 'miniprojectone', loadChildren: () => MiniprojectoneModule }, //Ex# 4
   { path: 'exfivetexttransformer', component: TexttransformComponent },
   {
     path: 'exsixcomponentinterations',
     component: ComponentinteractionsComponent,
   },
-
-  { path: 'miniprojectone', loadChildren: () => MiniprojectoneModule },
   { path: '**', redirectTo: 'exsixcomponentinterations' },
 ];
 

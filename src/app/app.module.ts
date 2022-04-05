@@ -13,17 +13,26 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
-import { ProducttrackingComponent } from './codingexercises/producttracking/producttracking.component';
-import { ListproductsComponent } from './codingexercises/listproducts/listproducts.component';
-import { NgSwitchDirectiveComponent } from './codingexercises/ng-switch-directive/ng-switch-directive.component';
-import { TexttransformComponent } from './codingexercises/texttransform/texttransform.component';
-import { TtordinalpipePipe } from './codingexercises/texttransform/texttransformpipes/ttordinalpipe.pipe';
-import { TtcleanwordPipe } from './codingexercises/texttransform/texttransformpipes/ttcleanword.pipe';
-import { TtCaseChangerPipe } from './codingexercises/texttransform/texttransformpipes/ttcasechanger.pipe';
-import { TtreversestringPipe } from './codingexercises/texttransform/texttransformpipes/ttreversestring.pipe';
-import { ComponentinteractionsComponent } from './codingexercises/componentinteractions/componentinteractions.component';
-import { CiactivecproductsComponent } from './codingexercises/componentinteractions/ciactivecproducts/ciactivecproducts.component';
-import { CiinactivecproductsComponent } from './codingexercises/componentinteractions/ciinactivecproducts/ciinactivecproducts.component';
+//Ex# 1: Binding
+import { ProducttrackingComponent } from './codingexercises/ex1_producttracking/producttracking.component';
+//Ex# 2: Directives
+import { ListproductsComponent } from './codingexercises/ex2_listproducts/listproducts.component';
+//Ex# 3: ngSwitch Directive
+import { NgSwitchDirectiveComponent } from './codingexercises/ex3_ng-switch-directive/ng-switch-directive.component';
+
+//Exercise 4: Mini project which is a feature module and hence not defined here.
+
+//Exercise 5: Text Transformation
+import { TexttransformComponent } from './codingexercises/ex5_texttransform/texttransform.component';
+import { TtordinalpipePipe } from './codingexercises/ex5_texttransform/texttransformpipes/ttordinalpipe.pipe';
+import { TtcleanwordPipe } from './codingexercises/ex5_texttransform/texttransformpipes/ttcleanword.pipe';
+import { TtCaseChangerPipe } from './codingexercises/ex5_texttransform/texttransformpipes/ttcasechanger.pipe';
+import { TtreversestringPipe } from './codingexercises/ex5_texttransform/texttransformpipes/ttreversestring.pipe';
+
+//Exercise 6: Component Interactions
+import { ComponentinteractionsComponent } from './codingexercises/ex6_componentinteractions/componentinteractions.component';
+import { CiactivecproductsComponent } from './codingexercises/ex6_componentinteractions/ciactivecproducts/ciactivecproducts.component';
+import { CiinactivecproductsComponent } from './codingexercises/ex6_componentinteractions/ciinactivecproducts/ciinactivecproducts.component';
 
 @NgModule({
   declarations: [
