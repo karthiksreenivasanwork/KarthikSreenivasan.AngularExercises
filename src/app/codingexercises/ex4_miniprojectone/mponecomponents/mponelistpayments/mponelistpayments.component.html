@@ -12,10 +12,7 @@
         :
         {{
           isPaymentDataFiltered
-            ? (datasource.data
-              | mponefilterlistpaymentcount
-                : dataFilterCriteria
-                : dataFilterSearchValue)
+            ? mponeuserService.GetFilteredCount
             : mponeuserService.TotalPaymentCount
         }}
       </h3>

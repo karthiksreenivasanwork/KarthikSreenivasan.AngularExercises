@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { IPaymentDetails } from '../models/ipaymentdetails';
+import { MponeuserService } from '../mponeservice/mponeuser.service';
 import { FilterListPayments } from '../mponeutils/mponefilterlistpayments';
 
 /**
@@ -11,6 +12,8 @@ import { FilterListPayments } from '../mponeutils/mponefilterlistpayments';
   name: 'mponefilterlistpayment',
 })
 export class MponefilterlistpaymentPipe implements PipeTransform {
+  constructor(public userService: MponeuserService) {}
+
   transform(
     paymentDetailCollection: MatTableDataSource<IPaymentDetails>,
     paymentDetailProperty: string,
@@ -29,6 +32,7 @@ export class MponefilterlistpaymentPipe implements PipeTransform {
         paymentDetailProperty,
         searchValue
       );
+      this.userService.setFilteredCount(filteredDataSource.data.length);
       return filteredDataSource;
     }
     return paymentDetailCollection;

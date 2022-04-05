@@ -3,7 +3,13 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\codingexercises"
+    "\\src\\app\\codingexercises",
+    "\\src\\app\\codingexercises\\ex2_listproducts",
+    "\\src\\app\\codingexercises\\ex4_miniprojectone",
+    "\\src\\app\\codingexercises\\ex4_miniprojectone\\mponecomponents",
+    "\\src\\app\\codingexercises\\ex4_miniprojectone\\mponecomponents\\mponelistpayments",
+    "\\src\\app\\codingexercises\\ex5_texttransform",
+    "\\src\\app\\codingexercises\\ex6_componentinteractions"
   ],
   "PreviewInSolutionExplorer": false
 }

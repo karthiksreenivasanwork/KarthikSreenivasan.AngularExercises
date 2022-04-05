@@ -22,7 +22,6 @@ import { MponelistpaymentsComponent } from './mponecomponents/mponelistpayments/
 
 import { CardnumbermaskPipe } from './mponecustompipe/cardnumbermask.pipe';
 import { MponefilterlistpaymentPipe } from './mponecustompipe/mponefilterlistpayment.pipe';
-import { MponefilterlistpaymentcountPipe } from './mponecustompipe/mponefilterlistpaymentcount.pipe';
 import { CardimageselectorPipe } from './mponecustompipe/cardimageselector.pipe';
 import { FirstletteruppercasePipe } from './mponecustompipe/firstletteruppercase.pipe';
 
@@ -37,7 +36,6 @@ import { CardnumberhyphenatorPipe } from './mponecustompipe/cardnumberhyphenator
 
     CardnumbermaskPipe,
     MponefilterlistpaymentPipe,
-    MponefilterlistpaymentcountPipe,
     CardimageselectorPipe,
     FirstletteruppercasePipe,
 

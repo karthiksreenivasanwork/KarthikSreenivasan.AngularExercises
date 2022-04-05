@@ -16,6 +16,7 @@ export class MponeuserService {
 
   private _paymentCollection: IPaymentDetails[] = [];
   private _rowIndex: number = 0;
+  private _filteredPaymentCount: number = 0;
 
   /**
    * Emits the collection from this service whenever we need to update the subscribers.
@@ -38,6 +39,21 @@ export class MponeuserService {
    */
   getAllPayments(): Subject<IPaymentDetails[]> {
     return this._paymentCollectionObservable;
+  }
+
+  /**
+   * Set the list of payment count for which the search filter was applied.
+   * @param filteredPaymentCount Total filtered count
+   */
+  setFilteredCount(filteredPaymentCount: number) {
+    this._filteredPaymentCount = filteredPaymentCount;
+  }
+
+  /**
+   * Returns the total payment count after applying search filters.
+   */
+  get GetFilteredCount(): number {
+    return this._filteredPaymentCount;
   }
 
   /**
