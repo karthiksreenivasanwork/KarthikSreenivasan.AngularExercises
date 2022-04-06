@@ -2,6 +2,15 @@
   transform: scale(3, 3);
 }
 
-.celldata {
+.celldata-left {
   margin-right: 30px;
+  height: 60px;
+}
+.celldata-right {
+  width: 200px;
+}
+
+.social-icons {
+  width: 55px;
+  height: 55px;
 }

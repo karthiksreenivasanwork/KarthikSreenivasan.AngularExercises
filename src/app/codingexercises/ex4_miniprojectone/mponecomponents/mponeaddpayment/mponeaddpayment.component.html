@@ -127,12 +127,13 @@
             </div>
           </ng-template>
         </mat-form-field>
-        <i
-          class="fa fa-3x fa-brands {{
-            formElementReference.value.cardNumberField | cardimageselector
-          }} mponecardimage"
-        >
-        </i>
+        <img
+          class="mponecardimage"
+          src="{{
+            formElementReference.value.cardNumberField
+              | cardimageselector: '../../../../../assets/Icons/'
+          }}"
+        />
       </div>
       <div class="flex-item-row" *ngIf="!modelPopupStatus">
         <button
