@@ -69,6 +69,17 @@ a:focus {
   border: 3px solid rgb(1, 76, 138);
 }
 
+.flex-nav-item-special {
+  border-radius: 20px;
+  background-color: #f4e911;
+  margin: 20px;
+  padding: 4px;
+  font-weight: bold;
+  color: blue;
+  border: 3px solid rgb(1, 76, 138);
+  text-align: center;
+}
+
 .nav-anchor {
   padding-left: 10px;
   padding-right: 10px;
