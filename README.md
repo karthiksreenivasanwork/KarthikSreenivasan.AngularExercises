@@ -5,6 +5,7 @@ This project contains coding exercises to understand the different concepts of A
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
 
 ## User Interface
+/assets/images/KarthikSreenivasan.AngularExercises - User Interface.jpg
 
 ## My LinkedIn Profile
 Please visit my LinkedIn Profile [here](https://www.linkedin.com/in/karthiksreenivasan/)
