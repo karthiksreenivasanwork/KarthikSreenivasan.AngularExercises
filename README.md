@@ -46,15 +46,20 @@ Please find the description of each Angular exercise along with its detailed req
 
   - Requirements
     - Add Payment Component
-      - This component will accept new payments. Data to capture will include customer name, price, and card number.
+      - This component will accept new payments.
+      -  Data to capture will include the following
+         - *Name:* Name of the customer.
+         - *Price:* Price paid.
+         - *Card Number:* Card number used to make this payment.
+
     - List Payments Component
       - This component will list the details of the payments.
         - The column to be displayed are as follows
-          - S.No: Dynamic row ID.
-          - Name: Name of the customer.
-          - Price: Price paid.
-          - Card Number: The card number used to make this payment.
-          - Operations: The user can edit or delete this record using the edit or delete button.
+          - *S.No:* Dynamic row ID.
+          - *Name:* Name of the customer.
+          - *Price:* Price paid.
+          - *Card Number:* The card number used to make this payment.
+          - *Operations:* The user can edit or delete this record using the edit or delete button.
         - Display the count of the total payments made.
 
     - Angular Services
@@ -78,12 +83,12 @@ Please find the description of each Angular exercise along with its detailed req
 5. **Exercise Name: Text Transformation Types**
   - Angular Concept: Custom Pipes (Text Transformation)
   - Requirements
-    - Ordinal Pipe: Add the suffix st, nd, rd, or th based on the number.
-    - Title Only Case: The first letter of each word is a capital letter.
-    - Filter bad words: Censor the bad word with the first and the last characters still visible.
-    - Camel case: The first letter of each word is a capital letter except for the first word.
+    - *Ordinal Pipe:* Add the suffix st, nd, rd, or th based on the number.
+    - *Title Only Case:* The first letter of each word is a capital letter.
+    - *Filter bad words:* Censor the bad word with the first and the last characters still visible.
+    - *Camel case:* The first letter of each word is a capital letter except for the first word.
       - Please note that no spaces between words are allowed in the output.
-    - Reverse a string: Reverse each word in a sentence.
+    - *Reverse a string:* Reverse each word in a sentence.
  
 6. **Exercise Name: Product Manager Tool**
   - Angular Concept: Component Interactions
