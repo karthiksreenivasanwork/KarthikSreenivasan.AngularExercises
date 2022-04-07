@@ -21,19 +21,23 @@ export class MponefilterlistpaymentPipe implements PipeTransform {
   ): MatTableDataSource<IPaymentDetails> {
     let filteredDataSource: MatTableDataSource<IPaymentDetails> =
       new MatTableDataSource<IPaymentDetails>();
-
+    this.userService.setFilteredCount(0);
     if (
       paymentDetailProperty.length > 0 &&
       searchValue.length > 0 &&
       paymentDetailCollection.data.length > 0
     ) {
-      filteredDataSource.data = FilterListPayments.applyFilter(
+      let filtedPaymentCollection = FilterListPayments.applyFilter(
         paymentDetailCollection.data,
         paymentDetailProperty,
         searchValue
       );
-      this.userService.setFilteredCount(filteredDataSource.data.length);
-      return filteredDataSource;
+
+      if (filtedPaymentCollection.length > 0) {
+        filteredDataSource.data = filtedPaymentCollection;
+        this.userService.setFilteredCount(filteredDataSource.data.length);
+        return filteredDataSource;
+      }
     }
     return paymentDetailCollection;
   }

@@ -103,6 +103,18 @@ h4 {
   font-weight: bold;
 }
 
+.flex-global-sub-header-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  background-color: rgb(112, 184, 4);
+  text-align: center;
+  font-size: 17px;
+  font-weight: bold;
+}
+
 .flex-global-item-column {
   display: flex;
   flex-direction: column;

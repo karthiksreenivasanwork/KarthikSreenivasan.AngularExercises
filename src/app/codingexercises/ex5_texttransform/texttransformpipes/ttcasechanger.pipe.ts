@@ -22,21 +22,23 @@ export class TtCaseChangerPipe implements PipeTransform {
     let inputSentence: string = inputSentenceParam;
     let words: string[] = inputSentence.split(' ');
     let transformedSentence: string = '';
+    let spaceHolder: string = ' ';
 
     for (let i = 0; i < words.length; i++) {
       if (!this.isWordExcempted(words[i])) {
-        if (transformationType == TTUtuls.CAMEL_CASE_PARAM && i == 0) { //Todo Gopi Sir - No space during camel case.
-          transformedSentence += `${words[i]} `;
+        if (transformationType == TTUtuls.CAMEL_CASE_PARAM && i == 0) {
+          transformedSentence += `${words[i]}`;
+          spaceHolder = ''; //No space between words with camel case.
           continue;
         }
-        
+
         if (words[i].length > 0)
           transformedSentence += `${words[i].charAt(0).toUpperCase()}${words[
             i
-          ].replace(words[i].charAt(0), '')} `;
+          ].replace(words[i].charAt(0), '')}${spaceHolder}`;
         console.log(transformedSentence);
       } else {
-        transformedSentence += `${words[i]} `;
+        transformedSentence += `${words[i]}${spaceHolder}`;
       }
     }
     return transformedSentence.trimEnd();

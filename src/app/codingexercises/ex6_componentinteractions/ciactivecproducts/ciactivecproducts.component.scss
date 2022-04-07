@@ -10,8 +10,15 @@
 }
 
 .heading {
-  text-decoration: underline;
-  color: rgba($color: #1e21b4, $alpha: 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  background-color: rgb(112, 184, 4);
+  text-align: center;
+  font-size: 17px;
+  font-weight: bold;
 }
 
 .logo-active-product {

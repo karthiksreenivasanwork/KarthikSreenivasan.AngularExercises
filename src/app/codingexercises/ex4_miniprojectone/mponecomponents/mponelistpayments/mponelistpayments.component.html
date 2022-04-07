@@ -1,12 +1,9 @@
-<div class="flex-body-container" *ngIf="datasource.data.length > 0">
+<div class="flex-body-container">
   <div class="flex-body-header-item">
     <div class="flex-body-header-cell-left">
       <h3>List Payments</h3>
     </div>
     <div class="flex-body-header-cell-right">
-      <!--
-        //Todo - Gopi Sir: Add either in service or local storage.
-      -->
       <h3 [ngStyle]="{ color: isPaymentDataFiltered ? 'green' : 'black' }">
         {{ labelToDisplayVisiblePaymentDataCount }}
         :
@@ -22,7 +19,7 @@
     <div class="errormessage">{{ errorMessage }}</div>
   </div>
   <div class="flex-body-item-column">
-    <div class="scrollable-container" *ngIf="!hasNoRecords">
+    <div class="scrollable-container">
       <table
         mat-table
         [dataSource]="

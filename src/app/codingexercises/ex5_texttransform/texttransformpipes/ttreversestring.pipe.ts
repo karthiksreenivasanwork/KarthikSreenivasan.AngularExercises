@@ -15,15 +15,15 @@ export class TtreversestringPipe implements PipeTransform {
      * Step 2: split('').reverse
      * Step 3: Join
      */
-    let reversedString: string = '';
-    let words: string[] = inputValue.split(' ');
+    // let reversedString: string = '';
+    // let words: string[] = inputValue.split(' ').reverse().join();
 
-    if (words.length > 0) {
-      for (let i = 0; i < words.length; i++) {
-        reversedString += `${this.reverseAWord(words[i])} `;
-      }
-    }
-    return reversedString;
+    // if (words.length > 0) {
+    //   for (let i = 0; i < words.length; i++) {
+    //     reversedString += `${this.reverseAWord(words[i])} `;
+    //   }
+    // }
+    return inputValue.split(' ').reverse().join().replace(/,/g, ' ');
   }
 
   private reverseAWord(inputWordParam: string): string {

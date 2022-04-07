@@ -57,12 +57,18 @@ table {
   th {
     //Provide space between columns
     padding: 20px;
+    background-color: cyan;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    border-bottom: 1px solid black;
   }
   td {
     padding: 10px;
     text-align: center;
     vertical-align: middle;
   }
+  border: 1px solid black;
 }
 
 .flex-cell-row {

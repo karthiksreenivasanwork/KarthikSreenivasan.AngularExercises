@@ -34,8 +34,7 @@ export class TtcleanwordPipe implements PipeTransform {
       `End Character ${inputBadWord.charAt(inputBadWord.length - 1)}`
     );
 
-    //Todo - Gopi Sir - Total length - 2 instead of substring.
-    let censorRange = inputBadWord.substring(1, inputBadWord.length - 1).length;
+    let censorRange = inputBadWord.length - 2;
     return `
     ${inputBadWord.charAt(0)}
     ${'*'.repeat(censorRange)}

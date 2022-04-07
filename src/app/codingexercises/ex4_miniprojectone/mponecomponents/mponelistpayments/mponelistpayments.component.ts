@@ -1,8 +1,11 @@
 import {
+  AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectorRef,
   Component,
   Input,
   OnDestroy,
-  OnInit
+  OnInit,
 } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable, Subject, Subscription } from 'rxjs';
@@ -22,7 +25,9 @@ const LABEL_FILTERED_COUNT: string = 'Filtered Count';
   templateUrl: './mponelistpayments.component.html',
   styleUrls: ['./mponelistpayments.component.scss'],
 })
-export class MponelistpaymentsComponent implements OnInit, OnDestroy {
+export class MponelistpaymentsComponent
+  implements OnInit, AfterViewChecked, OnDestroy
+{
   @Input() dataFilterCriteria: string = '';
   @Input() dataFilterSearchValue: string = '';
   /**
@@ -60,7 +65,10 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
    * Initialize
    * @param mponeuserService User service that is being injected via Dependency injection.
    */
-  constructor(public mponeuserService: MponeuserService) {
+  constructor(
+    public mponeuserService: MponeuserService,
+    public changeDetectionRef: ChangeDetectorRef
+  ) {
     this.labelToDisplayVisiblePaymentDataCount = LABEL_PAYMENT_COUNT;
   }
 
@@ -76,16 +84,32 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
     );
     //Clear existing payment data before loading the default data.
     this.mponeuserService.clearPaymentData();
-    
+
     //Add default payment data.
-    this.mponeuserService.addPaymentDetails('Karthik', 2000, "4558758965115248");
-    this.mponeuserService.addPaymentDetails('Krishna', 3000, "4668758965115675");
-    this.mponeuserService.addPaymentDetails('Ram', 3500, "3888758965115999");
+    this.mponeuserService.addPaymentDetails(
+      'Karthik',
+      2000,
+      '4558758965115248'
+    );
+    this.mponeuserService.addPaymentDetails(
+      'Krishna',
+      3000,
+      '4668758965115675'
+    );
+    this.mponeuserService.addPaymentDetails('Ram', 3500, '3888758965115999');
 
     //Fires everytime a search filter is applied in the parent component.
     this.eventSubscriptions.push(
       this.events.subscribe(() => this.updateSearchDetails())
     );
+  }
+
+  /**
+   * Avoid change detection errors after view has been changed after data has been rendered.
+   * Example: Filtered count being displayed to the user.
+   */
+  ngAfterViewChecked(): void {
+    this.changeDetectionRef.detectChanges();
   }
 
   /**
@@ -151,7 +175,7 @@ export class MponelistpaymentsComponent implements OnInit, OnDestroy {
 
       if (filteredData.length == 0) {
         this.hasNoRecords = true;
-        this.errorMessage = 'No records found';
+        this.errorMessage = 'No information available to match search request';
       }
     }
   }

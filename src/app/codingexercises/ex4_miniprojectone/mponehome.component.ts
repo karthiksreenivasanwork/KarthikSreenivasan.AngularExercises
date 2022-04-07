@@ -1,6 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 
+/**
+ * A mini project that mocks a payment management system.
+ */
 @Component({
   selector: 'app-mponehome',
   templateUrl: './mponehome.component.html',

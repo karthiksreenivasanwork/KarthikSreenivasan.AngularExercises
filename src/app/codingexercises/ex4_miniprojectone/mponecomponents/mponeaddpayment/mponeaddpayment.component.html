@@ -15,12 +15,12 @@
           ngModel
           matInput
           type="text"
-          placeholder="Payer Name"
+          placeholder="Firstname Lastname Surname"
           autocomplete="off"
           [ngModel]="inputEditName"
           #inputNameElementReference="ngModel"
           required
-          pattern="[a-zA-Z]+"
+          pattern="[a-zA-Z][a-zA-Z ]+"
           minlength="2"
         />
         <mat-hint>Name field can have alphabets only</mat-hint>
@@ -49,7 +49,7 @@
             *ngIf="inputNameElementReference.errors?.['pattern'] &&
                  inputNameElementReference.dirty"
           >
-            Please enter letters only
+            Please enter in the pattern - Firstname Lastname Surname
           </div>
         </ng-template>
       </mat-form-field>

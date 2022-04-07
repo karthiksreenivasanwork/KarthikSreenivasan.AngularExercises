@@ -20,8 +20,6 @@ export class CardimageselectorPipe implements PipeTransform {
         else faImageName = `${imagePath}${FA_MASTER_CARD_IMAGE_CLASS_NAME}`;
       }
     }
-
-    console.log(faImageName);
     return faImageName;
   }
 }
