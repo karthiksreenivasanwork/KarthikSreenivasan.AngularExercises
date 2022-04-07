@@ -16,79 +16,109 @@
           <mat-panel-description> Requirements </mat-panel-description>
         </mat-expansion-panel-header>
         <ul>
+          <span class="subHeading">Original Requirement</span>
+          <li><b>Add Payment Component</b></li>
           <ul>
-            <span class="subHeading">Original Requirement</span>
             <li class="formatListTag">
-              The first component will accept new payments. Data to capture will
-              include customer name, price and their card number.
+              This component will accept new payments.
             </li>
             <li class="formatListTag">
-              The second component will list the payments details.
-            </li>
-            <li class="formatListTag">
-              Column to be displayed are as follows
+              Data to capture will include the following
               <ol>
-                <li>S.No: Dynamic row ID.</li>
                 <li>Name: Name of the customer.</li>
                 <li>Price: Price paid.</li>
                 <li>Card Number: Card number used to make this payment.</li>
-                <li>
-                  Operations: User can edit or delete this record using edit or
-                  delete button.
-                </li>
               </ol>
             </li>
+          </ul>
+
+          <li><b>List Payments Component</b></li>
+          <ul>
             <li class="formatListTag">
-              Payment details must be tracked with the help of a service.
+              This component will list the details of the payments.
             </li>
+            <ul>
+              <li class="formatListTag">
+                Column to be displayed are as follows
+                <ol>
+                  <li>S.No: Dynamic row ID.</li>
+                  <li>Name: Name of the customer.</li>
+                  <li>Price: Price paid.</li>
+                  <li>Card Number: Card number used to make this payment.</li>
+                  <li>
+                    Operations: User can edit or delete this record using edit
+                    or delete button.
+                  </li>
+                </ol>
+              </li>
+            </ul>
             <li class="formatListTag">
               Display the count of the total payments made.
             </li>
           </ul>
-        </ul>
-        <ul>
+
+          <li><b>Angular Services</b></li>
           <ul>
-            <span class="subHeading">Updated Requirement - 1</span>
             <li class="formatListTag">
-              Search payment data by the column name using a custom pipe. Price
-              column will have to match the exact number but the other columns
-              can any match of the search value.
+              Payment details must be tracked with the help of a service.
+            </li>
+          </ul>
+        </ul>
+
+        <ul>
+          <span class="subHeading">Updated Requirement - 1</span>
+          <li><b>Custom Pipes</b></li>
+          <ul>
+            <li class="formatListTag">
+              Search payment data by the column name using a custom pipe in the List payment component. The
+              price column will have to match the exact number but the other
+              columns can match the search value.
             </li>
             <li class="formatListTag">
               Mask the credit card number on display using a custom pipe.
             </li>
             <li class="formatListTag">
-              Display 'Visa' image if the card number starts with 50 or above
-              and 'Master' otherwise. Minimum search critiera is 2 digits.
+              Display the 'Visa' image if the card number starts with 50 or
+              above and 'Master' otherwise. The minimum search criteria is 2
+              digits.
+            </li>
+            <li class="formatListTag">
+              While displaying the name column, the first letter must always
+              start with a capital.
             </li>
           </ul>
         </ul>
+
         <ul>
+          <span class="subHeading">Updated Requirement - 2</span>
+          <li><b>Custom Directive</b></li>
           <ul>
-            <span class="subHeading">Updated Requirement - 2</span>
             <li class="formatListTag">
-              Custom Directive - Display hyphen after every 4 digits while
-              displaying the card number.
-            </li>
-            <li class="formatListTag">
-              Custom Pipe - While displaying the name column, the first letter
-              must always start with capital.
+              Display a hyphen after every 4 digits while displaying the card
+              number.
             </li>
           </ul>
         </ul>
+
         <ul>
+          <span class="subHeading">Updated Requirement - 3</span>
+          <li><b>Communication between components</b></li>
           <ul>
-            <span class="subHeading">Updated Requirement - 3</span>
             <li class="formatListTag">
-              Move the search UI controls from 'List Payment' to it's parent
+              Move the search UI controls from 'List Payment' to its parent
               component. This has to be done using @Input for the 'List Payment'
-              to receive the criteria from it's parent.
+              to receive the criteria from its parent.
             </li>
           </ul>
+        </ul>
+
+        <ul>
+          <span class="subHeading">Updated Requirement - 4</span>
+          <li><b>Template-driven form validations</b></li>
           <ul>
-            <span class="subHeading">Updated Requirement - 4</span>
             <li class="formatListTag">
-              Apply template driven form validations.
+              Apply template-driven form validations while adding and editing
+              payment details.
             </li>
           </ul>
         </ul>

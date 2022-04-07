@@ -1,5 +1,5 @@
 
-# KarthikSreenivasan.AngularExercises
+# Angular Exercises
 
 This project contains coding exercises to understand the different concepts of Angular 13 and beyond.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
@@ -38,25 +38,42 @@ Please find the description of each Angular exercise along with its detailed req
 
 4. **Exercise Name: Payment Manager Tool**
   - Angular Concept: It is a mini-project with multiple concepts enumerated below
+    - Angular Services
+    - Custom Pipes
+    - Custom Directives
+    - @Input and @Output for the communication between components.
+    - Template-driven form validations
+
   - Requirements
-    - The first component will accept new payments. Data to capture will include customer name, price, and card number.
-    - The second component will list the details of the payments.
-    - The column to be displayed are as follows
-      - S.No: Dynamic row ID.
-      - Name: Name of the customer.
-      - Price: Price paid.
-      - Card Number: The card number used to make this payment.
-      - Operations: The user can edit or delete this record using the edit or delete button.
-      
-    - Payment details must be tracked with the help of a service.
-    - Display the count of the total payments made.
-    - Search payment data by the column name using a custom pipe. The price column will have to match the exact number but the other columns can match the search value.
-    - Mask the credit card number on display using a custom pipe.
-    - Display 'Visa' image if the card number starts with 50 or above and 'Master' otherwise. The minimum search criteria is 2 digits.
-    - Custom Directive - Display a hyphen after every 4 digits while displaying the card number.
-    - Custom Pipe - While displaying the name column, the first letter must always start with a capital.
-    - Move the search UI controls from 'List Payment' to its parent component. This has to be done using @Input for the 'List Payment' to receive the criteria from its parent.
-    - Apply template-driven form validations.
+    - Add Payment Component
+      - This component will accept new payments. Data to capture will include customer name, price, and card number.
+    - List Payments Component
+      - This component will list the details of the payments.
+        - The column to be displayed are as follows
+          - S.No: Dynamic row ID.
+          - Name: Name of the customer.
+          - Price: Price paid.
+          - Card Number: The card number used to make this payment.
+          - Operations: The user can edit or delete this record using the edit or delete button.
+        - Display the count of the total payments made.
+
+    - Angular Services
+      - Payment details must be tracked with the help of a service.
+
+    - Custom Pipes
+      - Search payment data by the column name using a custom pipe in the List payment component. The price column will have to match the exact number but the other columns can match the search value.
+      - Mask the credit card number on display using a custom pipe.
+      - Display the 'Visa' image if the card number starts with 50 or above and 'Master' otherwise. The minimum search criteria is 2 digits.
+      - While displaying the name column, the first letter must always start with a capital.
+
+    - Custom Directive
+      - Display a hyphen after every 4 digits while displaying the card number.
+
+    - Communication between components
+      - Move the search UI controls from 'List Payment' to its parent component. This has to be done using @Input for the 'List Payment' to receive the criteria from its parent.
+
+    - Template-driven form validations
+      - Apply template-driven form validations while adding and editing payment details.
     
 5. **Exercise Name: Text Transformation Types**
   - Angular Concept: Custom Pipes (Text Transformation)
@@ -65,7 +82,8 @@ Please find the description of each Angular exercise along with its detailed req
     - Title Only Case: The first letter of each word is a capital letter.
     - Filter bad words: Censor the bad word with the first and the last characters still visible.
     - Camel case: The first letter of each word is a capital letter except for the first word.
-    - Reverse a string: Reverse each word in a sentence
+      - Please note that no spaces between words are allowed in the output.
+    - Reverse a string: Reverse each word in a sentence.
  
 6. **Exercise Name: Product Manager Tool**
   - Angular Concept: Component Interactions
@@ -75,5 +93,5 @@ Please find the description of each Angular exercise along with its detailed req
     - When an inactive product is clicked, it gets added to the parent component as active and vice-versa.
 
 ## User Interface (UI) Component Library
-1. Angular Materials: https://material.angular.io/components/categories
+- Angular Materials: https://material.angular.io/components/categories
 
