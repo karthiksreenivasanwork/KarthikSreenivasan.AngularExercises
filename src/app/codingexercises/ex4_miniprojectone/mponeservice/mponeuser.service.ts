@@ -82,7 +82,6 @@ export class MponeuserService {
 
       hasPaymentAdded = true;
     } catch (exceptionRef) {}
-
     return hasPaymentAdded;
   }
 

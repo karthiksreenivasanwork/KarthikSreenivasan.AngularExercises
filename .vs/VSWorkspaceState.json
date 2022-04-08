@@ -4,13 +4,13 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\codingexercises",
-    "\\src\\app\\codingexercises\\ex4_miniprojectone",
-    "\\src\\app\\codingexercises\\ex4_miniprojectone\\mponecustompipe",
-    "\\src\\app\\codingexercises\\ex5_texttransform",
-    "\\src\\app\\codingexercises\\ex5_texttransform\\texttransformpipes",
+    "\\src\\app\\codingexercises\\ex1_producttracking",
+    "\\src\\app\\codingexercises\\ex2_listproducts",
+    "\\src\\app\\codingexercises\\ex3_ng-switch-directive",
     "\\src\\app\\codingexercises\\ex6_componentinteractions",
     "\\src\\app\\codingexercises\\ex6_componentinteractions\\ciactivecproducts",
     "\\src\\app\\codingexercises\\ex6_componentinteractions\\ciinactivecproducts"
   ],
+  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": false
 }

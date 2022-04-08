@@ -9,7 +9,7 @@ import { TTUtuls } from './texttransformpipes/ttutils';
   templateUrl: './texttransform.component.html',
   styleUrls: ['./texttransform.component.scss'],
 })
-export class TexttransformComponent implements OnInit {
+export class TexttransformComponent {
   dropDownData: string = '';
   inputValue: string = '';
   outputValue: string = '';
@@ -29,8 +29,6 @@ export class TexttransformComponent implements OnInit {
     this.textTransformCollection.set('camelcase', 'Camel case');
     this.textTransformCollection.set('reverse', 'Reverse a string');
   }
-
-  ngOnInit(): void {}
 
   onSelectionChange() {
     this.inputValue = '';

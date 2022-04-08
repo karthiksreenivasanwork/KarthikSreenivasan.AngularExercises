@@ -14,12 +14,12 @@ export class FirstletteruppercasePipe implements PipeTransform {
 
     if (inputValueParam.length > 0) {
       let firstLetter = inputValueParam.charAt(0);
-      let regexOnlyCharacters = new RegExp('[a-z]');
+      let regexOnlyCharacters = /[a-z]/;
 
       if (regexOnlyCharacters.test(firstLetter)) {
         firstLetterAsCapital =
           firstLetter.toUpperCase() +
-          inputValueParam.substring(1, inputValueParam.length - 1);
+          inputValueParam.substring(1);
         return firstLetterAsCapital;
       }
     }

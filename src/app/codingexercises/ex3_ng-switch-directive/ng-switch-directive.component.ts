@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './ng-switch-directive.component.html',
   styleUrls: ['./ng-switch-directive.component.scss']
 })
-export class NgSwitchDirectiveComponent implements OnInit {
+export class NgSwitchDirectiveComponent {
 
   dropDownData: string = "";
   contactCollection = new Map<string, string>();
@@ -19,14 +19,5 @@ export class NgSwitchDirectiveComponent implements OnInit {
     this.contactCollection.set("twitter", "Twitter Handle");
     this.contactCollection.set("facebook", "Facebook");
     this.contactCollection.set("instagram", "Instagram");
-
-    /**
-     * Get the first element from the map
-     * https://stackoverflow.com/questions/32373301/first-item-from-a-map-on-javascript-es2015
-     */
-    //this.dropDownData = this.contactCollection.entries().next().value[0];
-  }
-
-  ngOnInit(): void {
   }
 }

@@ -2,10 +2,7 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
+  Output
 } from '@angular/core';
 import { IProductDetailsModel } from '../ciactivecproducts/iproductdetailsmodel';
 
@@ -23,7 +20,7 @@ const ICON_SWITCHER: string[] = [
   templateUrl: './ciinactivecproducts.component.html',
   styleUrls: ['./ciinactivecproducts.component.scss'],
 })
-export class CiinactivecproductsComponent implements OnInit {
+export class CiinactivecproductsComponent {
   @Input() set inputDeactivateProduct(value: IProductDetailsModel) {
     if (value.ProductName.trim() != '') {
       this.inactiveProductCollection.push(value);
@@ -43,18 +40,14 @@ export class CiinactivecproductsComponent implements OnInit {
 
     this.inActiveProductLogo = ICON_SWITCHER[currentProductIconIndex];
     setInterval(() => {
-      currentProductIconIndex == 0
-        ? (currentProductIconIndex = 1)
-        : (currentProductIconIndex = 0);
+      if (currentProductIconIndex == 0) currentProductIconIndex = 1;
+      else currentProductIconIndex = 0;
 
       this.inActiveProductLogo = ICON_SWITCHER[currentProductIconIndex];
     }, 1000);
   }
 
-  ngOnInit(): void {}
-
   OnActivateClick(productToActivateParam: IProductDetailsModel) {
-    //console.log(`Product Activated : ${productToActivateParam}`);
     let productLocationAsIndex = this.inactiveProductCollection.findIndex(
       (productFind) => {
         return productFind.ProductName == productToActivateParam.ProductName;

@@ -1,6 +1,5 @@
 import {
   AfterViewChecked,
-  AfterViewInit,
   ChangeDetectorRef,
   Component,
   Input,
@@ -8,7 +7,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Observable, Subject, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { IPaymentDetails } from '../../models/ipaymentdetails';
 import { FilterListPayments } from '../../mponeutils/mponefilterlistpayments';

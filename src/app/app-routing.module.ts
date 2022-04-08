@@ -7,6 +7,7 @@ import { NgSwitchDirectiveComponent } from './codingexercises/ex3_ng-switch-dire
 import { MiniprojectoneModule } from './/./codingexercises/ex4_miniprojectone/miniprojectone.module';
 import { TexttransformComponent } from './codingexercises/ex5_texttransform/texttransform.component';
 import { ComponentinteractionsComponent } from './codingexercises/ex6_componentinteractions/componentinteractions.component';
+import { Ex7ticketreservationComponent } from './codingexercises/ex7_ticketreservationsystem/ex7ticketreservation.component';
 
 // sets up routes constant where you define your routes
 const routes: Routes = [
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'ex6componentinterations',
     component: ComponentinteractionsComponent,
+  },
+  {
+    path: 'ex7ticketreservation',
+    component: Ex7ticketreservationComponent,
   },
   { path: '**', redirectTo: 'ex4miniprojectone' }, //Load the mini project by default.
 ];

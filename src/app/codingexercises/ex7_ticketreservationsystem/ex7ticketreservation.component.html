@@ -1,0 +1,59 @@
+<div class="flex-global-container">
+  <div class="flex-global-container-border">
+    <div class="flex-global-header-item">
+      <mat-label>Ticket Reservation System</mat-label>
+      <img
+        matTooltip="It is a dashboard that mocks a ticket reservation system. The user has to log in through a mobile number before reserving the tickets by adding one or more passengers."
+        class="logo-info"
+        matTooltipClass="mat-tooltip-header"
+        src="../../../assets/Icons/circle-info-solid.svg"
+        alt="information icon"
+      />
+    </div>
+    <div class="flex-global-item-row">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Ex# 7: Ticket Reservation System </mat-panel-title>
+          <mat-panel-description> Requirements </mat-panel-description>
+        </mat-expansion-panel-header>
+        <ul>
+          <ul>
+            <span class="subHeading"
+              >Reservation Component</span
+            >
+            <li class="formatListTag">
+              This component will accept input from the user to add passengers
+              dynamically to reserve tickets.
+            </li>
+            <li class="formatListTag">
+              Please implement using FormArray - Reactive Forms.
+            </li>
+            <span class="subHeading"
+              >Login Component</span
+            >
+            <li class="formatListTag">
+              This component will accept mobile number and then use the OTP as
+              password.
+            </li>
+            <li class="formatListTag">
+              Accept the mobile number from the user.
+            </li>
+            <li class="formatListTag">
+              Dynamically create the OTP textbox which accepts 6 digit OTP
+              number from the user.
+            </li>
+            <li class="formatListTag">
+              Please use the reactive forms to validate the control that accepts the mobile number.
+            </li>
+            <li class="formatListTag">
+              Dynamically display the OTP using concept - FormArray.
+            </li>
+          </ul>
+        </ul>
+      </mat-expansion-panel>
+    </div>
+    <div class="flex-global-item-column">
+      <app-ex7ticketlogin></app-ex7ticketlogin>
+    </div>
+  </div>
+</div>

@@ -15,7 +15,7 @@ const ICON_SWITCHER: string[] = [
   templateUrl: './ciactivecproducts.component.html',
   styleUrls: ['./ciactivecproducts.component.scss'],
 })
-export class CiactivecproductsComponent implements OnInit {
+export class CiactivecproductsComponent {
   activeProductCollection: IProductDetailsModel[] = [
     { ProductName: 'IPhone 13' },
     { ProductName: 'Samsung Galaxy Note' },
@@ -29,15 +29,12 @@ export class CiactivecproductsComponent implements OnInit {
     let currentProductIconIndex = 0;
     this.activeProductLogo = ICON_SWITCHER[currentProductIconIndex];
     setInterval(() => {
-      currentProductIconIndex == 0
-        ? (currentProductIconIndex = 1)
-        : (currentProductIconIndex = 0);
+      if (currentProductIconIndex == 0) currentProductIconIndex = 1;
+      else currentProductIconIndex = 0;
 
       this.activeProductLogo = ICON_SWITCHER[currentProductIconIndex];
     }, 1000);
   }
-
-  ngOnInit(): void {}
 
   onDeActivateClick(productToDeactivateParam: IProductDetailsModel) {
     let productLocationAsIndex = this.activeProductCollection.findIndex(
@@ -50,8 +47,8 @@ export class CiactivecproductsComponent implements OnInit {
       /**
        * Force change detection of @Input with new object reference.
        * Link: https://stackoverflow.com/questions/55050015/ngonchanges-not-firing-if-an-input-is-receiving-an-object
-       * 
-       * The OnChanges lifecycle hook is triggered when the @Input property value changes. 
+       *
+       * The OnChanges lifecycle hook is triggered when the @Input property value changes.
        * In the case of an object, that value is the object reference. If the object reference does not change, OnChanges is not triggered.
        * A possible technique to force change detection is to set a new object reference after modifying the property values:
        */
@@ -59,7 +56,6 @@ export class CiactivecproductsComponent implements OnInit {
        * Gopi Sir's comments:
        * JSON string conversion as well Object.assign come under deep copy concepts
        */
-      //this.productToDeactivate = productToDeactivateParam; //Issue with the code.
       this.productToDeactivate = Object.assign({}, productToDeactivateParam); //CODE ISSUE FIXED HERE.
     }
   }

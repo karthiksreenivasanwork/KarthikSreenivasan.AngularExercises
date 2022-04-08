@@ -8,8 +8,5 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './componentinteractions.component.html',
   styleUrls: ['./componentinteractions.component.scss'],
 })
-export class ComponentinteractionsComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
+export class ComponentinteractionsComponent {
 }

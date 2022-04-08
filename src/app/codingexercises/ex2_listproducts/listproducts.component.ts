@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './listproducts.component.html',
   styleUrls: ['./listproducts.component.scss']
 })
-export class ListproductsComponent implements OnInit {
+export class ListproductsComponent {
 
   productCollection: string[] = [];
 
@@ -28,9 +28,6 @@ export class ListproductsComponent implements OnInit {
     this.productCollection.push("Google Pixelbook Go");
     this.productCollection.push("Google Pixel 5a with 5G");
     this.productCollection.push("Google Pixel 6");
-  }
-
-  ngOnInit(): void {
   }
 
   onAddProductClick() {

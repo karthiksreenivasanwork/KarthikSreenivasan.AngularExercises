@@ -9,15 +9,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './producttracking.component.html',
   styleUrls: ['./producttracking.component.scss']
 })
-export class ProducttrackingComponent implements OnInit {
+export class ProducttrackingComponent {
 
   itemsInTheCart: number = 0;
   errorMessage: string = "";
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   onAddProductClick() {
     if (this.itemsInTheCart >= 0 && this.itemsInTheCart <= 4) {

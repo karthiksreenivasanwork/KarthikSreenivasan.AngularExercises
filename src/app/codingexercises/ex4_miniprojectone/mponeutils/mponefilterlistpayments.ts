@@ -24,9 +24,9 @@ export abstract class FilterListPayments {
 
     let filteredPaymentDetailCollection: IPaymentDetails[] = [];
 
-    for (let i = 0; i < paymentDetailCollectionParam.length; i++) {
+    for (let paymentDetail of paymentDetailCollectionParam) {
       let paymentDetailvalue: string = new PaymentDetailsKeyValueMapper(
-        paymentDetailCollectionParam[i]
+        paymentDetail
       )
         .getValueFromPropertyName(paymentDetailProperty)
         .toString();
@@ -34,31 +34,17 @@ export abstract class FilterListPayments {
       switch (paymentDetailProperty) {
         case 'price': //Price is always exact match
           if (paymentDetailvalue == searchValueParam) {
-            filteredPaymentDetailCollection.push(
-              paymentDetailCollectionParam[i]
-            );
+            filteredPaymentDetailCollection.push(paymentDetail);
           }
           break;
         case 'name':
-          if (
-            paymentDetailvalue
-              .toLowerCase()
-              .includes(searchValueParam.toLowerCase())
-          ) {
-            filteredPaymentDetailCollection.push(
-              paymentDetailCollectionParam[i]
-            );
-          }
-          break;
         case 'cardnumber':
           if (
             paymentDetailvalue
               .toLowerCase()
               .includes(searchValueParam.toLowerCase())
           ) {
-            filteredPaymentDetailCollection.push(
-              paymentDetailCollectionParam[i]
-            );
+            filteredPaymentDetailCollection.push(paymentDetail);
           }
           break;
       }

@@ -1,5 +1,4 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
-import { CardNumberHelper } from '../mponeutils/cardnumberhelper';
 /**
  * Custom directive to hyphenate a card number at 4 digit intervals.
  * Specs

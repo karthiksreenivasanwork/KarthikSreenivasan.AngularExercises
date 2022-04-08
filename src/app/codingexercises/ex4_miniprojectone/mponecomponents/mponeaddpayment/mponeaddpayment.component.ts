@@ -24,7 +24,7 @@ import { CardNumberHelper } from '../../mponeutils/cardnumberhelper';
   templateUrl: './mponeaddpayment.component.html',
   styleUrls: ['./mponeaddpayment.component.scss'],
 })
-export class MponeaddpaymentComponent implements OnInit, AfterViewInit {
+export class MponeaddpaymentComponent implements OnInit {
   /**
    * Defined only for model to view data binding for performing updates.
    */
@@ -41,8 +41,6 @@ export class MponeaddpaymentComponent implements OnInit, AfterViewInit {
     public matDialog: MatDialog
   ) {}
 
-  ngAfterViewInit(): void {}
-
   ngOnInit(): void {
     this.userService.onPaymentEditedEvent.subscribe(
       (paymentDataToEdit: IPaymentDetails) => {
@@ -52,9 +50,7 @@ export class MponeaddpaymentComponent implements OnInit, AfterViewInit {
   }
 
   frmGetPaymentData(formValue: NgForm) {
-    console.log('Form Submitted');
-    console.log(formValue.value);
-
+    console.log(formValue.value.nameField);
     if (
       //Format data to save without any text formatting.
       this.userService.addPaymentDetails(
@@ -113,7 +109,7 @@ export class MponeaddpaymentDialogComponent
     super(userService, matDialog);
   }
 
-  override ngAfterViewInit(): void {
+  ngAfterViewInit(): void {
     this._position = this.paymentDetailsToEdit.position;
     this.inputEditName = this.paymentDetailsToEdit.name;
     this.inputEditPrice = this.paymentDetailsToEdit.price;
@@ -125,7 +121,7 @@ export class MponeaddpaymentDialogComponent
 
   override ngOnInit(): void {
     //Change the buttons to update instead of add when the dialog is opened.
-    this.dialogRef.afterOpened().subscribe((openResult) => {
+    this.dialogRef.afterOpened().subscribe(() => {
       this.modelPopupStatus = true;
     });
   }

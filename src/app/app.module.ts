@@ -34,6 +34,9 @@ import { TtreversestringPipe } from './codingexercises/ex5_texttransform/texttra
 import { ComponentinteractionsComponent } from './codingexercises/ex6_componentinteractions/componentinteractions.component';
 import { CiactivecproductsComponent } from './codingexercises/ex6_componentinteractions/ciactivecproducts/ciactivecproducts.component';
 import { CiinactivecproductsComponent } from './codingexercises/ex6_componentinteractions/ciinactivecproducts/ciinactivecproducts.component';
+import { Ex7ticketloginComponent } from './codingexercises/ex7_ticketreservationsystem/ex7ticketlogin/ex7ticketlogin.component';
+import { Ex7ticketreservationComponent } from './codingexercises/ex7_ticketreservationsystem/ex7ticketreservation.component';
+import { Ex7passengersComponent } from './codingexercises/ex7_ticketreservationsystem/ex7passengers/ex7passengers.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,9 @@ import { CiinactivecproductsComponent } from './codingexercises/ex6_componentint
     ComponentinteractionsComponent,
     CiactivecproductsComponent,
     CiinactivecproductsComponent,
+    Ex7ticketloginComponent,
+    Ex7ticketreservationComponent,
+    Ex7passengersComponent,
   ],
   imports: [
     MatExpansionModule,
