@@ -50,7 +50,6 @@ export class MponeaddpaymentComponent implements OnInit {
   }
 
   frmGetPaymentData(formValue: NgForm) {
-    console.log(formValue.value.nameField);
     if (
       //Format data to save without any text formatting.
       this.userService.addPaymentDetails(

@@ -20,24 +20,25 @@
           <ul>
             <span class="subHeading">Original Requirement</span>
             <li class="formatListTag">
-              <b>Ordinal Pipe:</b> Add the suffix st, nd, rd, or th based on the
-              number.
+              <span class="span-bold">Ordinal Pipe:</span> Add the suffix st,
+              nd, rd, or th based on the number.
             </li>
             <li class="formatListTag">
-              <b>Title Only Case:</b> The first letter of each word is a capital
-              letter.
+              <span class="span-bold">Title Only Case:</span> The first letter
+              of each word is a capital letter.
             </li>
             <li class="formatListTag">
-              <b>Filter bad words:</b> Censor the bad word with the first and
-              the last characters still visible.
+              <span class="span-bold">Filter bad words:</span> Censor the bad
+              word with the first and the last characters still visible.
             </li>
             <li class="formatListTag">
-              <b>Camel case:</b> The first letter of each word is a capital
-              letter except for the first word. Please note that no spaces
-              between words are allowed in the output.
+              <span class="span-bold">Camel case:</span> The first letter of
+              each word is a capital letter except for the first word. Please
+              note that no spaces between words are allowed in the output.
             </li>
             <li class="formatListTag">
-              <b>Reverse a string:</b> Reverse each word in a sentence.
+              <span class="span-bold">Reverse a string:</span> Reverse each word
+              in a sentence.
             </li>
           </ul>
         </ul>
@@ -102,7 +103,11 @@
       <div *ngSwitchCase="'titleonlycase'" class="switchcasecontainer">
         <div class="flex-global-item-row">
           <div class="celldata-left">
-            <img src="../../../assets/Icons/a-solid.svg" class="logo" alt="A alphabet icon"/>
+            <img
+              src="../../../assets/Icons/a-solid.svg"
+              class="logo"
+              alt="A alphabet icon"
+            />
           </div>
           <div class="celldata-right">
             <mat-form-field
@@ -131,7 +136,9 @@
         <div class="flex-global-item-column">
           <mat-label>Sample Input: we are all here</mat-label>
           <mat-label>
-            Sample output: <b>W</b>e are <b>A</b>ll <b>H</b>ere
+            Sample output: <span class="span-bold">W</span>e are
+            <span class="span-bold">A</span>ll
+            <span class="span-bold">H</span>ere
           </mat-label>
           <mat-label class="label-danger">
             Exception for transformation: are, in, was, to, of, with, the
@@ -141,7 +148,11 @@
       <div *ngSwitchCase="'cleanword'" class="switchcasecontainer">
         <div class="flex-global-item-row">
           <div class="celldata-left">
-            <img src="../../../assets/Icons/ellipsis-solid.svg" class="logo" alt="Ellipsis icon"/>
+            <img
+              src="../../../assets/Icons/ellipsis-solid.svg"
+              class="logo"
+              alt="Ellipsis icon"
+            />
           </div>
           <div class="celldata-right">
             <mat-form-field
@@ -169,7 +180,12 @@
         <hr />
         <div class="flex-global-item-column">
           <mat-label>Sample Input: badword1</mat-label>
-          <mat-label>Sample output: <b>b</b>******<b>1</b></mat-label>
+          <mat-label
+            >Sample output: <span class="span-bold">b</span>******<span
+              class="span-bold"
+              >1</span
+            ></mat-label
+          >
           <mat-label class="label-danger">
             Bad words are: badword1 and badword2
           </mat-label>
@@ -178,7 +194,11 @@
       <div *ngSwitchCase="'camelcase'" class="switchcasecontainer">
         <div class="flex-global-item-row">
           <div class="celldata-left">
-            <img src="../../../assets/Icons/mountain-solid.svg" class="logo" alt="mountain icon"/>
+            <img
+              src="../../../assets/Icons/mountain-solid.svg"
+              class="logo"
+              alt="mountain icon"
+            />
           </div>
           <div class="celldata-right">
             <mat-form-field
@@ -206,7 +226,12 @@
         <hr />
         <div class="flex-global-item-column">
           <mat-label>Sample input: world is beautiful</mat-label>
-          <mat-label>Sample output: world <b>I</b>s<b>B</b>eautiful</mat-label>
+          <mat-label
+            >Sample output: world <span class="span-bold">I</span>s<span
+              class="span-bold"
+              >B</span
+            >eautiful</mat-label
+          >
           <mat-label class="label-danger">
             Exception for transformation: are, in, was, to, of, with, the
           </mat-label>
@@ -215,7 +240,11 @@
       <div *ngSwitchCase="'reverse'" class="switchcasecontainer">
         <div class="flex-global-item-row">
           <div class="celldata-left">
-            <img src="../../../assets/Icons/backward-solid.svg" class="logo" alt="backward icon"/>
+            <img
+              src="../../../assets/Icons/backward-solid.svg"
+              class="logo"
+              alt="backward icon"
+            />
           </div>
           <div class="celldata-right">
             <mat-form-field

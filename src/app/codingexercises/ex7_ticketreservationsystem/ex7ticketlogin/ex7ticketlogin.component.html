@@ -1,1 +1,22 @@
-<p>ex7ticketlogin works!</p>
+<div class="flex-local-row-container">
+  <div>
+    <mat-form-field class="matInputField" appearance="fill">
+      <mat-label>Mobile Number</mat-label>
+      <input
+        matInput
+        placeholder="10 digit mobilenumber"
+        [(ngModel)]="mobileNumber"
+      />
+    </mat-form-field>
+  </div>
+  <div>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onMobileNumberSubmitted()"
+    >
+      Submit
+    </button>
+  </div>
+</div>
+<app-ex7passengers></app-ex7passengers>

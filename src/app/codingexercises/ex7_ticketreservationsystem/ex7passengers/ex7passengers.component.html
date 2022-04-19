@@ -1,1 +1,19 @@
-<p>ex7passengers works!</p>
+<div class="flex-local-row-container">
+  <div>
+    <mat-form-field class="matInputField" style="width: 100px;" appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name of the passenger" />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="matInputField" style="width: 60px;" appearance="fill">
+      <mat-label>Age</mat-label>
+      <input matInput placeholder="000" />
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button color="primary" (click)="onCustomerAdded()">
+      Add
+    </button>
+  </div>
+</div>
