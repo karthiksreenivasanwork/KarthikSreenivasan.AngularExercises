@@ -1,19 +1,107 @@
-<div class="flex-local-row-container">
-  <div>
-    <mat-form-field class="matInputField" style="width: 100px;" appearance="fill">
-      <mat-label>Name</mat-label>
-      <input matInput placeholder="Name of the passenger" />
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field class="matInputField" style="width: 60px;" appearance="fill">
-      <mat-label>Age</mat-label>
-      <input matInput placeholder="000" />
-    </mat-form-field>
-  </div>
-  <div>
-    <button mat-raised-button color="primary" (click)="onCustomerAdded()">
-      Add
-    </button>
+<div class="flex-global-sub-header-item">Reservation</div>
+<div
+  class="alert-message-container"
+  *ngIf="passengerInputForm.invalid && errorMessage != ''"
+>
+  <div class="alert-message-item errorInputDisplay">
+    {{ errorMessage }}
   </div>
 </div>
+<div class="alert-message-container" *ngIf="bookingConfirmed">
+  <div class="alert-message-item successInputDisplay">
+    {{ userMessage }}
+  </div>
+</div>
+<form [formGroup]="passengerInputForm">
+  <div class="flex-local-row-container">
+    <div class="flex-item" *ngIf="!bookingConfirmed">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onPassengerAddClick()"
+        type="button"
+        [disabled]="this.getDynamicPassengerUIControls.length == 3"
+      >
+        Add Passenger
+      </button>
+    </div>
+    <div
+      class="flex-item"
+      *ngIf="!bookingConfirmed && getDynamicPassengerUIControls.length > 0"
+    >
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onTicketBookingConfirmedClick()"
+        type="button"
+      >
+        Book Tickets
+      </button>
+    </div>
+    <div class="flex-item" *ngIf="bookingConfirmed">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onMakeNewReservationClick()"
+        type="button"
+      >
+        Make new reservation
+      </button>
+    </div>
+  </div>
+  <ng-container *ngIf="!this.bookingConfirmed">
+    <div formArrayName="passengerControls">
+      <div
+        class="flex-local-row-container"
+        *ngFor="
+          let singlePassengerUIControl of getDynamicPassengerUIControls;
+          index as i
+        "
+      >
+        <div class="flex-item">
+          <mat-label>{{ i + 1 }}. </mat-label>
+        </div>
+        <div class="flex-item">
+          <mat-form-field class="matInputField" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input
+              matInput
+              placeholder="Name of the passenger"
+              autocomplete="off"
+              [formControlName]="i"
+              (blur)="onDynamicPassengerTextboxBlurEvent()"
+            />
+          </mat-form-field>
+        </div>
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="onPassengerRemovedClick(i)"
+          type="button"
+        >
+          Remove
+        </button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="this.bookingConfirmed">
+    <h2>Ticket Details</h2>
+    <div
+      class="flex-local-row-container"
+      *ngFor="
+        let reservedPassengerName of ticketDetailsOfConfirmedPassengers;
+        index as i
+      "
+    >
+      <div class="flex-item">
+        <mat-label>{{ i + 1 }}. </mat-label>
+      </div>
+      <div class="flex-item">
+        <span
+          >Passenger `{{ reservedPassengerName }}`'s ticket has been
+          confirmed.</span
+        >
+      </div>
+    </div>
+  </ng-container>
+</form>

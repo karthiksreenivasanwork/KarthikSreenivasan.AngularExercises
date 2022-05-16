@@ -5,7 +5,8 @@ This project contains coding exercises to understand the different concepts of A
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
 
 ## User Interface
-![AngularExercises - User Interface](/src/assets/images/KarthikSreenivasan.AngularExercises-UserInterface.jpg)
+![Mini Project One](/src/assets/images/KarthikSreenivasan.AngularExercises-UserInterface_Mini Project_One.png)
+![Ticket Reservation](/src/assets/images/KarthikSreenivasan.AngularExercises-UserInterface_Ticket_Reservation.png)
 
 ## My LinkedIn Profile
 Please visit my LinkedIn profile page [here.](https://www.linkedin.com/in/karthiksreenivasan/)
@@ -96,6 +97,24 @@ Please find the description of each Angular exercise along with its detailed req
     - Have a list of active products in one component. Let each product have a button against it that says - Active
     - Have a list of inactive products in another component. Let each product have a button against it that says - InActive
     - When an inactive product is clicked, it gets added to the parent component as active and vice-versa.
+
+7. **Exercise Name: Ticket Reservation System**
+  - Angular Concept: Dynamic forms
+  - Requirements
+    - Reservation Component
+      - This component will accept input from the user to add passengers dynamically to reserve tickets using the concept `FormArray`.
+      - Add a new passenger using the 'Add Passenger' button.
+      - Confirm the booking using the 'Book Tickets' button. Additionally, display the ticket details as a summary.
+      - To rebook tickets, add a new button called 'Make new reservations'
+      - Limit a ticket to have a maximum of 3 passengers.
+      - Remove each passenger while booking using the 'Remove' button.
+
+    - Login Component
+      - This component will accept a mobile number and then use the OTP as a password.
+      - Accept the mobile number of the user.
+      - Dynamically create the OTP textbox that accepts a static four-digit OTP number '9958' from the user.
+      - Please use the reactive forms to validate the control that accepts the mobile number and the OTP.
+      - Dynamically accept the passenger details using the concept - FormArray.
 
 ## User Interface (UI) Component Library
 - Angular Materials: https://material.angular.io/components/categories

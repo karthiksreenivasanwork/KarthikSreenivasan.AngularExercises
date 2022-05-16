@@ -40,7 +40,7 @@ import { CardnumberhyphenatorPipe } from './mponecustompipe/cardnumberhyphenator
     FirstletteruppercasePipe,
 
     CardnumberhyphenatorDirective,
-     CardnumberhyphenatorPipe,
+    CardnumberhyphenatorPipe,
   ],
   imports: [
     CommonModule,
@@ -55,7 +55,7 @@ import { CardnumberhyphenatorPipe } from './mponecustompipe/cardnumberhyphenator
     MatTableModule,
     MatDialogModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
 })
 export class MiniprojectoneModule {}

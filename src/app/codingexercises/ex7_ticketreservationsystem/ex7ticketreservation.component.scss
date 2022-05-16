@@ -1,5 +1,4 @@
 ::ng-deep .flex-local-row-container {
-  width: 100px;
   padding: 0;
   margin: 0;
   display: flex;
@@ -13,4 +12,58 @@
   border-radius: 5px;
   margin: 0px;
   padding: 2px 0px 2px 20px;
+}
+
+::ng-deep .flex-item {
+  margin: 10px;
+}
+
+/* You can add global styles to this file, and also import other style files */
+::ng-deep .alert-message-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+::ng-deep .alert-message-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+::ng-deep .errorInputDisplay {
+  background-color: rgba($color: #d17575, $alpha: 1);
+  color: rgba($color: #ffffff, $alpha: 1);
+  padding: 3px;
+  border: solid 1px red;
+  border-radius: 20px;
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+}
+
+::ng-deep .informationInputDisplay {
+  background-color: rgba($color: #75a3d1, $alpha: 1);
+  color: rgba($color: #000000, $alpha: 1);
+  padding: 3px;
+  border: solid 1px rgb(0, 34, 255);
+  border-radius: 20px;
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+}
+
+::ng-deep .successInputDisplay {
+  background-color: rgba($color: #94d175, $alpha: 1);
+  color: rgba($color: #000000, $alpha: 1);
+  padding: 3px;
+  border: solid 1px rgb(5, 94, 1);
+  border-radius: 20px;
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
 }
