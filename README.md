@@ -102,8 +102,8 @@ Please find the description of each Angular exercise along with its detailed req
   - Angular Concept: Dynamic forms
   - Requirements
     - Reservation Component
-      - This component will accept input from the user to add passengers dynamically to reserve tickets using the concept `FormArray`.
-      - Add a new passenger using the 'Add Passenger' button.
+      - This component will accept input from the user to add passengers dynamically to reserve tickets using the concept `FormArray` and `FormBuilder`.
+      - Add a new passenger using the 'Add Passenger' button to accept their name and age.
       - Confirm the booking using the 'Book Tickets' button. Additionally, display the ticket details as a summary.
       - To rebook tickets, add a new button called 'Make new reservations'
       - Limit a ticket to have a maximum of 3 passengers.

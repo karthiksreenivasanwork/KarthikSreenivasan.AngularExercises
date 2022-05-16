@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormArray,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+interface IPassengerDetails {
+  PassengerName: string;
+  PassengerAge: number;
+}
 
 @Component({
   selector: 'app-ex7passengers',
@@ -19,10 +18,12 @@ export class Ex7passengersComponent implements OnInit {
   errorMessage: string = '';
 
   bookingConfirmed: boolean;
-  ticketDetailsOfConfirmedPassengers: string[] = [];
+  ticketDetailsOfConfirmedPassengers: IPassengerDetails[] = [];
+
+  constructor(public formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.passengerInputForm = new FormGroup({
+    this.passengerInputForm = this.formBuilder.group({
       passengerControls: new FormArray([]),
     });
   }
@@ -35,6 +36,7 @@ export class Ex7passengersComponent implements OnInit {
     this.userMessage = '';
     this.errorMessage = '';
     this.passengerInputForm.reset();
+    //Clears all the child FormGroup collection created by the FormBuilder.
     (<FormArray>this.passengerInputForm.get('passengerControls')).clear();
     this.ticketDetailsOfConfirmedPassengers = [];
   }
@@ -42,9 +44,9 @@ export class Ex7passengersComponent implements OnInit {
   /**
    * Returns the collection of controls added dynamically for adding passenger details.
    */
-  get getDynamicPassengerUIControls(): AbstractControl[] {
+  get passengerFormGroupCollection(): FormGroup[] {
     return (<FormArray>this.passengerInputForm.get('passengerControls'))
-      .controls;
+      .controls as FormGroup[];
   }
 
   /**
@@ -52,13 +54,15 @@ export class Ex7passengersComponent implements OnInit {
    */
   onPassengerAddClick() {
     this.errorMessage = '';
-    if (this.getDynamicPassengerUIControls.length <= 2) {
-      let dynamicNameControl = new FormControl(null, Validators.required);
+    if (this.passengerFormGroupCollection.length <= 2) {
       (<FormArray>this.passengerInputForm.get('passengerControls')).push(
-        dynamicNameControl
+        this.formBuilder.group({
+          dynPassengerName: ['', Validators.required],
+          dynAge: ['', Validators.required],
+        })
       );
     }
-    if (this.getDynamicPassengerUIControls.length == 3)
+    if (this.passengerFormGroupCollection.length == 3)
       this.errorMessage = 'Booking limited to 3 passengers per ticket.';
   }
 
@@ -74,9 +78,13 @@ export class Ex7passengersComponent implements OnInit {
       this.userMessage = 'Reservation confirmed. Ticket details below.';
       this.bookingConfirmed = true;
 
-      (this.passengerInputForm.value['passengerControls'] as string[]).forEach(
-        (passengerName) => {
-          this.ticketDetailsOfConfirmedPassengers.push(passengerName);
+      (this.passengerInputForm.value['passengerControls'] as any[]).forEach(
+        (formGroupData) => {
+          let passengerInformation: IPassengerDetails = {
+            PassengerName: formGroupData['dynPassengerName'],
+            PassengerAge: formGroupData['dynAge'],
+          };
+          this.ticketDetailsOfConfirmedPassengers.push(passengerInformation);
         }
       );
       this.passengerInputForm.reset();
@@ -105,10 +113,11 @@ export class Ex7passengersComponent implements OnInit {
 
   /**
    * Dynamic textbox event that is fired this control looses focus.
+   * @param dynamicFormGroup Each child FormGroup reference holding the name and the age textbox controls.
    */
-  onDynamicPassengerTextboxBlurEvent() {
+  onDynamicPassengerTextboxBlurEvent(dynamicFormGroup: FormGroup) {
     this.errorMessage = '';
-    if (this.passengerInputForm.invalid)
+    if (dynamicFormGroup.invalid)
       this.errorMessage = 'Please provide one more more passenger details';
   }
 }

@@ -20,14 +20,14 @@
         color="primary"
         (click)="onPassengerAddClick()"
         type="button"
-        [disabled]="this.getDynamicPassengerUIControls.length == 3"
+        [disabled]="this.passengerFormGroupCollection.length == 3"
       >
         Add Passenger
       </button>
     </div>
     <div
       class="flex-item"
-      *ngIf="!bookingConfirmed && getDynamicPassengerUIControls.length > 0"
+      *ngIf="!bookingConfirmed && passengerFormGroupCollection.length > 0"
     >
       <button
         mat-raised-button
@@ -52,35 +52,61 @@
   <ng-container *ngIf="!this.bookingConfirmed">
     <div formArrayName="passengerControls">
       <div
-        class="flex-local-row-container"
         *ngFor="
-          let singlePassengerUIControl of getDynamicPassengerUIControls;
+          let singlePassengerFormGroup of passengerFormGroupCollection;
           index as i
         "
       >
-        <div class="flex-item">
-          <mat-label>{{ i + 1 }}. </mat-label>
-        </div>
-        <div class="flex-item">
-          <mat-form-field class="matInputField" appearance="fill">
-            <mat-label>Name</mat-label>
-            <input
-              matInput
-              placeholder="Name of the passenger"
-              autocomplete="off"
-              [formControlName]="i"
-              (blur)="onDynamicPassengerTextboxBlurEvent()"
-            />
-          </mat-form-field>
-        </div>
-        <button
-          mat-raised-button
-          color="warn"
-          (click)="onPassengerRemovedClick(i)"
-          type="button"
+        <div
+          [formGroup]="singlePassengerFormGroup"
+          class="flex-local-row-container"
         >
-          Remove
-        </button>
+          <div class="flex-item">
+            <mat-label>{{ i + 1 }}. </mat-label>
+          </div>
+          <div class="flex-item">
+            <mat-form-field class="matInputField" appearance="fill">
+              <mat-label>Name</mat-label>
+              <input
+                matInput
+                placeholder="Name"
+                autocomplete="off"
+                formControlName="dynPassengerName"
+                (blur)="
+                  onDynamicPassengerTextboxBlurEvent(singlePassengerFormGroup)
+                "
+                type="text"
+              />
+            </mat-form-field>
+          </div>
+          <div class="flex-item">
+            <mat-form-field
+              class="matInputField"
+              style="width: 100px"
+              appearance="fill"
+            >
+              <mat-label>Age</mat-label>
+              <input
+                matInput
+                placeholder="000"
+                autocomplete="off"
+                formControlName="dynAge"
+                (blur)="
+                  onDynamicPassengerTextboxBlurEvent(singlePassengerFormGroup)
+                "
+                type="number"
+              />
+            </mat-form-field>
+          </div>
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="onPassengerRemovedClick(i)"
+            type="button"
+          >
+            Remove
+          </button>
+        </div>
       </div>
     </div>
   </ng-container>
@@ -97,9 +123,11 @@
         <mat-label>{{ i + 1 }}. </mat-label>
       </div>
       <div class="flex-item">
-        <span
-          >Passenger `{{ reservedPassengerName }}`'s ticket has been
-          confirmed.</span
+        <mat-label
+          >Name: `{{ reservedPassengerName.PassengerName }}` | Age: `{{
+            reservedPassengerName.PassengerAge
+          }}`
+          ></mat-label
         >
       </div>
     </div>

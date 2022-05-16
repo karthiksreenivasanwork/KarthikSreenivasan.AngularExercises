@@ -4,13 +4,12 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\codingexercises",
-    "\\src\\app\\codingexercises\\ex2_listproducts",
     "\\src\\app\\codingexercises\\ex4_miniprojectone",
     "\\src\\app\\codingexercises\\ex4_miniprojectone\\mponecomponents",
     "\\src\\app\\codingexercises\\ex4_miniprojectone\\mponecomponents\\mponeaddpayment",
     "\\src\\app\\codingexercises\\ex7_ticketreservationsystem",
+    "\\src\\app\\codingexercises\\ex7_ticketreservationsystem\\ex7passengers",
     "\\src\\app\\codingexercises\\ex7_ticketreservationsystem\\ex7ticketlogin"
   ],
-  "SelectedNode": "\\src\\app\\codingexercises\\ex7_ticketreservationsystem",
   "PreviewInSolutionExplorer": false
 }
