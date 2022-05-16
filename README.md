@@ -5,8 +5,8 @@ This project contains coding exercises to understand the different concepts of A
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
 
 ## User Interface
-![Mini Project One](/src/assets/images/KarthikSreenivasan.AngularExercises-UserInterface_Mini Project_One.png)
-![Ticket Reservation](/src/assets/images/KarthikSreenivasan.AngularExercises-UserInterface_Ticket_Reservation.png)
+![Mini Project One](/src/assets/images/UserInterface_MiniProject_One.png)
+![Ticket Reservation](/src/assets/images/UserInterface_Ticket_Reservation.png)
 
 ## My LinkedIn Profile
 Please visit my LinkedIn profile page [here.](https://www.linkedin.com/in/karthiksreenivasan/)
