@@ -4,12 +4,12 @@
 This project contains coding exercises to understand the different concepts of Angular 13 and beyond.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
 
+## My LinkedIn Profile | Profile Name: karthiksreenivasan
+Please visit my LinkedIn profile page [here.](https://www.linkedin.com/in/karthiksreenivasan/)
+
 ## User Interface
 ![Mini Project One](/src/assets/images/UserInterface_MiniProject_One.png)
 ![Ticket Reservation](/src/assets/images/UserInterface_Ticket_Reservation.png)
-
-## My LinkedIn Profile
-Please visit my LinkedIn profile page [here.](https://www.linkedin.com/in/karthiksreenivasan/)
 
 ## Project Description
 Please find the description of each Angular exercise along with its detailed requirements below
